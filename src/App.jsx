@@ -10,7 +10,7 @@ function App() {
       <header className="text-center mb-8">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">Hi, I’m Nandkishor Jadhav 👋</h1>
         <p className="text-lg md:text-xl text-gray-300">
-          Full-Stack Developer | Web Enthusiast | Problem Solver
+          Full-Stack Developer | Web Enthusiast | Problem Solver | ML Enthusiastic
         </p>
       </header>
 
