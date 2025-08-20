@@ -1,12 +1,14 @@
-import { useState } from 'react'
 import './App.css'
-import About from './pages/About';
-import Home from './pages/Home';
-import Skills from './pages/Skill.jsx'
-import Contact from './pages/Contact.jsx'
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [activeSection, setActiveSection] = useState('home');
 
   return (
     <div className="relative">
@@ -18,6 +20,6 @@ function App() {
       <Contact />
     </div>
   );
-}
+};
 
-export default App
+export default App;

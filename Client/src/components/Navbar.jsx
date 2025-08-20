@@ -1,7 +1,17 @@
+// Navbar.js
 import React, { useState, useEffect } from "react";
-import { FaGithub, FaLinkedin, FaTwitter, FaBars, FaTimes } from "react-icons/fa";
+import { 
+  FaBars, 
+  FaTimes 
+} from "react-icons/fa";
+import { 
+  HiOutlineHome,
+  HiOutlineUser,
+  HiOutlineCollection,
+  HiOutlineAcademicCap,
+  HiOutlineChatAlt
+} from "react-icons/hi";
 
-// Navbar Component
 const Navbar = ({ activeSection, setActiveSection }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -17,11 +27,11 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   }, []);
 
   const navItems = [
-    { name: 'Home', id: 'home' },
-    { name: 'About', id: 'about' },
-    { name: 'Projects', id: 'projects' },
-    { name: 'Skills', id: 'skills' },
-    { name: 'Contact', id: 'contact' }
+    { name: 'Home', id: 'home', icon: <HiOutlineHome /> },
+    { name: 'About', id: 'about', icon: <HiOutlineUser /> },
+    { name: 'Projects', id: 'projects', icon: <HiOutlineCollection /> },
+    { name: 'Skills', id: 'skills', icon: <HiOutlineAcademicCap /> },
+    { name: 'Contact', id: 'contact', icon: <HiOutlineChatAlt /> }
   ];
 
   const handleNavClick = (sectionId) => {
@@ -52,12 +62,13 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                     activeSection === item.id
                       ? 'bg-indigo-600 text-white shadow-lg'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
+                  <span className="hidden lg:inline">{item.icon}</span>
                   {item.name}
                 </button>
               ))}
@@ -84,12 +95,13 @@ const Navbar = ({ activeSection, setActiveSection }) => {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-all duration-300 ${
+                className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-all duration-300 flex items-center gap-3 ${
                   activeSection === item.id
                     ? 'bg-indigo-600 text-white'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700'
                 }`}
               >
+                {item.icon}
                 {item.name}
               </button>
             ))}
@@ -99,3 +111,5 @@ const Navbar = ({ activeSection, setActiveSection }) => {
     </nav>
   );
 };
+
+export default Navbar;

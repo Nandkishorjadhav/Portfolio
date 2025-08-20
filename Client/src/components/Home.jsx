@@ -1,3 +1,12 @@
+// Home.js
+import React from "react";
+import { 
+  FaGithub, 
+  FaLinkedin, 
+  FaTwitter,
+  FaLaptopCode
+} from "react-icons/fa";
+
 const Home = () => {
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-gray-900 via-purple-900 to-black text-white px-6 pt-16">
@@ -54,9 +63,11 @@ const Home = () => {
       {/* Hero Image / Illustration */}
       <div className="mt-12">
         <div className="w-72 sm:w-96 h-72 sm:h-96 mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
-          <span className="text-6xl">👨‍💻</span>
+          <FaLaptopCode className="text-8xl text-white" />
         </div>
       </div>
     </section>
   );
 };
+
+export default Home;
