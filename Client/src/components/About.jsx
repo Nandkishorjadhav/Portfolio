@@ -1,4 +1,3 @@
-// About.js
 import React from "react";
 import { FaGithub, FaRobot } from "react-icons/fa";
 import { 

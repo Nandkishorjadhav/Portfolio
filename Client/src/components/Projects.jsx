@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTheme } from "./ThemeProvider";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Projects = () => {
   const { isDarkMode } = useTheme();
-  const [currentProject, setCurrentProject] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -61,38 +60,6 @@ const Projects = () => {
     },
   ];
 
-  // Auto-rotate slider every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isModalOpen) {
-        setCurrentProject((prev) => (prev + 1) % projects.length);
-      }
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [projects.length, isModalOpen]);
-
-  // Prevent body scroll when modal is open
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-    // Cleanup on unmount
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-    };
-  }, [isModalOpen]);
-
-  // Navigation handlers
-  const goToPrevious = () => {
-    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const goToNext = () => {
-    setCurrentProject((prev) => (prev + 1) % projects.length);
-  };
-
   // Modal handlers
   const openModal = (project) => {
     setSelectedProject(project);
@@ -102,23 +69,6 @@ const Projects = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
-  };
-
-  // Animation variants for project cards
-  const cardVariants = {
-    hidden: { opacity: 0, x: 100, rotate: 5 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      rotate: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-    exit: {
-      opacity: 0,
-      x: -100,
-      rotate: -5,
-      transition: { duration: 0.8, ease: "easeIn" },
-    },
   };
 
   // Animation variants for modal
@@ -155,77 +105,46 @@ const Projects = () => {
           Explore some of my recent work
         </p>
 
-        <div className="relative w-full overflow-hidden">
-          {/* Navigation Buttons */}
-          <button
-            onClick={goToPrevious}
-            className={`absolute left-0 top-1/2 transform -translate-y-1/2 ${buttonBg} text-white p-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 active:opacity-80 md:p-4`}
-            aria-label="Previous project"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <button
-            onClick={goToNext}
-            className={`absolute right-0 top-1/2 transform -translate-y-1/2 ${buttonBg} text-white p-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 active:opacity-80 md:p-4`}
-            aria-label="Next project"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-
-          <AnimatePresence mode="wait">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
             <motion.div
-              key={currentProject}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className={`relative ${cardBg} ${cardBorder} border rounded-2xl p-6 md:p-8 mx-auto max-w-4xl shadow-xl backdrop-blur-sm`}
+              key={index}
+              className={`relative ${cardBg} ${cardBorder} border rounded-2xl p-6 md:p-8 shadow-xl backdrop-blur-sm`}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: isDarkMode
+                  ? "0 0 15px rgba(239, 68, 68, 0.3)"
+                  : "0 0 15px rgba(239, 68, 68, 0.3)",
+                background: isDarkMode
+                  ? "linear-gradient(to bottom right, rgba(239, 68, 68, 0.7), rgba(6, 182, 212, 0.7), rgba(99, 102, 241, 0.7))"
+                  : "linear-gradient(to bottom right, rgba(239, 68, 68, 0.7), rgba(59, 130, 246, 0.7), rgba(147, 51, 234, 0.7))",
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-                <div className="md:w-1/2">
+              <div className="flex flex-col items-center">
+                <div className="w-full mb-6">
                   <img
-                    src={projects[currentProject].image}
-                    alt={projects[currentProject].title}
-                    className="w-full h-48 md:h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300"
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 md:h-64 object-cover rounded-lg shadow-md"
                   />
                 </div>
-                <div className="md:w-1/2 flex flex-col justify-center">
+                <div className="flex-1 text-center mb-6">
                   <h3
                     className={`text-2xl md:text-3xl font-semibold ${textColor} mb-4`}
                   >
-                    {projects[currentProject].title}
+                    {project.title}
                   </h3>
                   <p
                     className={`${subTextColor} mb-6 text-sm md:text-base`}
                   >
-                    {projects[currentProject].description}
+                    {project.description}
                   </p>
+                </div>
+                <div>
                   <button
-                    onClick={() => openModal(projects[currentProject])}
+                    onClick={() => openModal(project)}
                     className={`inline-block px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${titleGradient} hover:opacity-90 transition-opacity duration-300`}
                   >
                     View Project
@@ -233,21 +152,7 @@ const Projects = () => {
                 </div>
               </div>
             </motion.div>
-          </AnimatePresence>
-
-          {/* Slider navigation dots */}
-          <div className="flex justify-center mt-6 space-x-2">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentProject(index)}
-                className={`w-3 h-3 rounded-full ${
-                  currentProject === index ? "bg-cyan-400" : "bg-gray-400"
-                } hover:bg-cyan-500 transition-colors duration-300`}
-                aria-label={`Go to project ${index + 1}`}
-              />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
 
