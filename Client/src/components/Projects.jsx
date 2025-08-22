@@ -1,11 +1,4 @@
-// Projects.js
 import React from "react";
-import { FaGithub, FaRobot } from "react-icons/fa";
-import { 
-  HiOutlineDesktopComputer,
-  HiOutlineBriefcase,
-  HiOutlineExternalLink
-} from "react-icons/hi";
 import { useTheme } from "./ThemeProvider";
 
 const Projects = () => {
