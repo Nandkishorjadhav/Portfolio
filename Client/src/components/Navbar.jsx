@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { 
   FaBars, 
-  FaTimes 
+  FaTimes,
+  FaMoon 
 } from "react-icons/fa";
 import { 
   HiOutlineHome,
