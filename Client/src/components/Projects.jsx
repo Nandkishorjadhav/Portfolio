@@ -28,35 +28,55 @@ const Projects = () => {
   // Sample project data
   const projects = [
     {
-      title: "Project One",
+      title: "Pragyaa Tech Event Website",
       description:
-        "A modern web application built with React and Node.js, featuring real-time data processing.",
-      detailedDescription:
-        "Project One is a full-stack web application designed for real-time data processing and visualization. It integrates a React frontend with a Node.js backend, leveraging WebSocket for seamless data updates. The app includes user authentication, real-time analytics, and a responsive design.",
-      technologies: ["React", "Node.js", "WebSocket", "Tailwind CSS", "MongoDB"],
-      image: "https://via.placeholder.com/600x400?text=Project+One",
-      liveLink: "https://example.com/project-one",
-      sourceLink: "https://github.com/example/project-one",
-    },
-    {
-      title: "Project Two",
-      description: "An e-commerce platform with advanced search and payment integration.",
-      detailedDescription:
-        "Project Two is a feature-rich e-commerce platform with advanced search capabilities powered by Elasticsearch and secure payment integration via Stripe. It offers a user-friendly interface, product filtering, and a seamless checkout experience.",
-      technologies: ["React", "Elasticsearch", "Stripe", "Tailwind CSS", "Express"],
-      image: "https://via.placeholder.com/600x400?text=Project+Two",
-      liveLink: "https://example.com/project-two",
-      sourceLink: "https://github.com/example/project-two",
-    },
-    {
-      title: "Project Three",
-      description: "A mobile-responsive dashboard for data analytics and visualization.",
+        "It is website of my college fest.",
       detailedDescription:
         "Project Three is a mobile-responsive dashboard built for data analytics, featuring interactive charts and real-time data updates. It uses D3.js for visualizations and integrates with a REST API for dynamic data fetching, optimized for both desktop and mobile devices.",
-      technologies: ["React", "D3.js", "REST API", "Tailwind CSS", "PostgreSQL"],
+      technologies: [
+        "React",
+        "D3.js",
+        "REST API",
+        "Tailwind CSS",
+        "PostgreSQL",
+      ],
       image: "https://via.placeholder.com/600x400?text=Project+Three",
-      liveLink: "https://example.com/project-three",
-      sourceLink: "https://github.com/example/project-three",
+      liveLink: "https://pragyaa-2k25.vercel.app/",
+      sourceLink: "https://github.com/Nandkishorjadhav/Pragyaa-2k25",
+    },
+    {
+      title: "HackNova Hackathon Project",
+      description:
+        "An e-commerce platform with advanced search and payment integration.",
+      detailedDescription:
+        "Project Two is a feature-rich e-commerce platform with advanced search capabilities powered by Elasticsearch and secure payment integration via Stripe. It offers a user-friendly interface, product filtering, and a seamless checkout experience.",
+      technologies: [
+        "React",
+        "Elasticsearch",
+        "Stripe",
+        "Tailwind CSS",
+        "Express",
+      ],
+      image: "https://via.placeholder.com/600x400?text=Project+Two",
+      liveLink: "https://example.com/project-two",
+      sourceLink: "https://github.com/Nandkishorjadhav/HackNova",
+    },
+    {
+      title: "Tech AI Tools",
+      description:
+        "A modern web application built with React and Node.js, featuring real-time useful and free AI tools.",
+      detailedDescription:
+        "It includes all free AI tools in different category for different use with their link. It integrates a React frontend with a Node.js backend, leveraging WebSocket for seamless data updates. The app includes user authentication, real-time analytics, and a responsive design.",
+      technologies: [
+        "React",
+        "Node.js",
+        "WebSocket",
+        "Tailwind CSS",
+        "MongoDB",
+      ],
+      image: "https://via.placeholder.com/600x400?text=Project+One",
+      liveLink: "https://example.com/project-one",
+      sourceLink: "https://github.com/Nandkishorjadhav/Engineering-Exploration",
     },
   ];
 
@@ -93,15 +113,15 @@ const Projects = () => {
       id="projects"
       className={`min-h-screen bg-gradient-to-br ${bgGradient} py-20 px-6 flex items-center justify-center`}
     >
-      <div className={`max-w-6xl mx-auto w-full ${isModalOpen ? "blur-md" : ""}`}>
+      <div
+        className={`max-w-6xl mx-auto w-full ${isModalOpen ? "blur-md" : ""}`}
+      >
         <h2
           className={`text-4xl md:text-5xl font-bold text-center bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}
         >
           My Projects
         </h2>
-        <p
-          className={`text-center ${subTextColor} mb-12 text-lg md:text-xl`}
-        >
+        <p className={`text-center ${subTextColor} mb-12 text-lg md:text-xl`}>
           Explore some of my recent work
         </p>
 
@@ -109,15 +129,10 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className={`relative ${cardBg} ${cardBorder} border rounded-2xl p-6 md:p-8 shadow-xl backdrop-blur-sm`}
+              className={`relative ${cardBg} ${cardBorder} border rounded-2xl p-4 md:p-6 shadow-md backdrop-blur-sm`}
               whileHover={{
                 scale: 1.05,
-                boxShadow: isDarkMode
-                  ? "0 0 15px rgba(239, 68, 68, 0.3)"
-                  : "0 0 15px rgba(239, 68, 68, 0.3)",
-                background: isDarkMode
-                  ? "linear-gradient(to bottom right, rgba(239, 68, 68, 0.7), rgba(6, 182, 212, 0.7), rgba(99, 102, 241, 0.7))"
-                  : "linear-gradient(to bottom right, rgba(239, 68, 68, 0.7), rgba(59, 130, 246, 0.7), rgba(147, 51, 234, 0.7))",
+                shadow: "lg",
                 transition: { duration: 0.3 },
               }}
               whileTap={{ scale: 0.98 }}
@@ -127,7 +142,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 md:h-64 object-cover rounded-lg shadow-md"
+                    className="w-full h-32 md:h-48 object-cover rounded-lg shadow-md"
                   />
                 </div>
                 <div className="flex-1 text-center mb-6">
@@ -136,16 +151,14 @@ const Projects = () => {
                   >
                     {project.title}
                   </h3>
-                  <p
-                    className={`${subTextColor} mb-6 text-sm md:text-base`}
-                  >
+                  <p className={`${subTextColor} mb-6 text-sm md:text-base`}>
                     {project.description}
                   </p>
                 </div>
                 <div>
                   <button
                     onClick={() => openModal(project)}
-                    className={`inline-block px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${titleGradient} hover:opacity-90 transition-opacity duration-300`}
+                    className={`inline-block px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${titleGradient} hover:opacity-90 transition-opacity duration-300 cursor-pointer`}
                   >
                     View Project
                   </button>
@@ -210,15 +223,11 @@ const Projects = () => {
                 alt={selectedProject.title}
                 className="w-full h-48 md:h-64 object-cover rounded-lg shadow-md mb-6"
               />
-              <p
-                className={`${subTextColor} mb-6 text-base md:text-lg`}
-              >
+              <p className={`${subTextColor} mb-6 text-base md:text-lg`}>
                 {selectedProject.detailedDescription}
               </p>
               <div className="mb-6">
-                <h4
-                  className={`text-xl font-semibold ${textColor} mb-2`}
-                >
+                <h4 className={`text-xl font-semibold ${textColor} mb-2`}>
                   Technologies Used
                 </h4>
                 <div className="flex flex-wrap gap-2">
