@@ -1,9 +1,5 @@
 import React from "react";
-import { 
-  FaGithub, 
-  FaLinkedin, 
-  FaTwitter
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 import profilePic from "../assets/myPhoto.webp";
 
@@ -16,19 +12,20 @@ const Home = () => {
       const offsetTop = element.offsetTop - 60;
       window.scrollTo({
         top: offsetTop,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
 
+  // Updated background gradient with #393E46
   const bgGradient = isDarkMode
-    ? "from-slate-900 via-cyan-900 to-slate-900"
+    ? "from-[#393E46] via-gray-900 to-[#393E46]"
     : "from-blue-50 via-indigo-50 to-blue-50";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
   const subTextColor = isDarkMode ? "text-gray-300" : "text-slate-600";
   const nameGradient = isDarkMode
-    ? "from-cyan-400 to-blue-400"
+    ? "from-cyan-400 to-[#393E46]"
     : "from-blue-600 to-indigo-600";
 
   return (
@@ -36,25 +33,24 @@ const Home = () => {
       id="home"
       className={`min-h-screen flex flex-col md:flex-row justify-center items-center bg-gradient-to-br ${bgGradient} ${textColor} px-4 sm:px-6 pt-0 pb-0`}
     >
-      {/* Profile Photo on the Left */}
+      {/* Profile Photo */}
       <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
-  <div
-    className={`relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-8 ${
-      isDarkMode
-        ? "border-cyan-500/40 hover:border-cyan-400"
-        : "border-blue-500/40 hover:border-blue-600"
-    } shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,200,255,0.6)]`}
-  >
-    <img
-      src={profilePic}
-      alt="Profile"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
+        <div
+          className={`relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-8 ${
+            isDarkMode
+              ? "border-[#393E46]/60 hover:border-cyan-400"
+              : "border-blue-500/40 hover:border-blue-600"
+          } shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(57,62,70,0.7)]`}
+        >
+          <img
+            src={profilePic}
+            alt="Profile"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
 
-
-      {/* Details on the Right */}
+      {/* Details */}
       <div className="text-center max-w-3xl w-full md:w-1/2 md:text-left md:pl-10">
         <h1 className="text-5xl sm:text-6xl font-bold mb-4">
           Hi, I'm{" "}
@@ -79,12 +75,13 @@ const Home = () => {
           impactful projects.
         </p>
 
+        {/* Buttons */}
         <div className="flex justify-center md:justify-start gap-4 mb-10">
           <button
             onClick={() => handleScrollToSection("about")}
             className={`px-6 py-3 bg-gradient-to-r ${
               isDarkMode
-                ? "from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-cyan-500/25"
+                ? "from-[#393E46] to-cyan-600 hover:from-cyan-700 hover:to-[#393E46] shadow-[#393E46]/50"
                 : "from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-500/25"
             } text-white rounded-full text-lg shadow-lg transition duration-300 hover:transform hover:scale-105`}
           >
@@ -94,7 +91,7 @@ const Home = () => {
             onClick={() => handleScrollToSection("projects")}
             className={`px-6 py-3 bg-gradient-to-r ${
               isDarkMode
-                ? "from-gray-700 to-gray-800 hover:from-cyan-600/20 hover:to-blue-600/20 border-cyan-500/20"
+                ? "from-gray-700 to-[#393E46] hover:from-cyan-600/20 hover:to-[#393E46]/80 border-cyan-500/20"
                 : "from-gray-200 to-gray-300 hover:from-blue-600/20 hover:to-indigo-600/20 border-blue-500/20 text-slate-800"
             } rounded-full text-lg shadow-lg transition duration-300 hover:transform hover:scale-105 border`}
           >
@@ -102,6 +99,7 @@ const Home = () => {
           </button>
         </div>
 
+        {/* Socials */}
         <div className="flex justify-center md:justify-start gap-6 text-3xl">
           <a
             href="https://github.com/Nandkishorjadhav"
@@ -118,7 +116,7 @@ const Home = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={`${
-              isDarkMode ? "hover:text-blue-400" : "hover:text-indigo-600"
+              isDarkMode ? "hover:text-[#393E46]" : "hover:text-indigo-600"
             } transition-all duration-300 hover:transform hover:scale-110`}
           >
             <FaLinkedin />
