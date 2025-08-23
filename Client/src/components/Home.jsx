@@ -2,6 +2,7 @@ import React from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 import profilePic from "../assets/myPhoto.webp";
+import SplitText from "./SplitText";
 
 const Home = () => {
   const { isDarkMode } = useTheme();
@@ -15,6 +16,10 @@ const Home = () => {
         behavior: "smooth",
       });
     }
+  };
+
+  const handleAnimationComplete = () => {
+    console.log('All letters have animated!');
   };
 
   // Background gradient with #393E46 + #00ADB5 for dark mode
@@ -53,15 +58,50 @@ const Home = () => {
       </div>
 
       {/* Details on the Right */}
-      <div className="text-center max-w-3xl w-full md:w-1/2 md:text-left md:pl-10">
-        <h1 className="text-5xl sm:text-6xl font-bold mb-4">
-          Hi, I'm{" "}
-          <span
-            className={`bg-gradient-to-r ${nameGradient} bg-clip-text text-transparent`}
-          >
-            Nandkishor Jadhav
-          </span>{" "}
-          👋
+      <div className="text-center max-w-5xl w-full md:w-1/2 md:text-left md:pl-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 flex flex-wrap justify-center md:justify-start items-center">
+          <SplitText
+            text="Hi, I'm "
+            className={`bg-gradient-to-r ${nameGradient} bg-clip-text text-4xl sm:text-5xl md:text-6xl font-bold inline-block align-middle`}
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-80px"
+            textAlign="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
+          <SplitText
+            text="Nandkishor Jadhav"
+            className={`bg-gradient-to-r ${nameGradient} bg-clip-text text-4xl sm:text-5xl md:text-6xl font-bold inline-block align-middle whitespace-nowrap`}
+            delay={200} // Slightly delayed to follow "Hi, I'm"
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-80px"
+            textAlign="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
+          <SplitText
+            text=" 👋"
+            className={`bg-gradient-to-r ${nameGradient} bg-clip-text text-4xl sm:text-5xl md:text-6xl font-bold inline-block align-middle`}
+            delay={300} // Further delayed for sequential animation
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-80px"
+            textAlign="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
         </h1>
 
         <p
