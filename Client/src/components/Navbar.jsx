@@ -147,8 +147,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {/* Mobile Menu */}
+            {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-40">
           {/* Background Overlay with Blur */}
@@ -167,14 +166,14 @@ const Navbar = ({ activeSection, setActiveSection }) => {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`w-10/12 py-3 rounded-xl text-lg font-medium flex items-center justify-center gap-3 transition-all duration-300 ${
+                className={`w-10/12 py-3 rounded-xl text-lg font-medium flex items-center justify-center gap-3 transition-all duration-300 shadow-md ${
                   activeSection === item.id
                     ? isDarkMode
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg'
-                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white'
+                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
                     : isDarkMode
-                      ? 'hover:bg-slate-700 hover:text-white'
-                      : 'hover:bg-slate-200 hover:text-slate-900'
+                      ? 'bg-slate-700 text-white hover:bg-slate-600'
+                      : 'bg-blue-500 text-white hover:bg-blue-600'
                 }`}
               >
                 {item.icon}
@@ -184,6 +183,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           </div>
         </div>
       )}
+
 
     </nav>
   );
