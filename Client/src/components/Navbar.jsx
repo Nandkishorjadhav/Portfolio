@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { 
   FaBars, 
   FaTimes,
-  FaMoon 
+  FaMoon,
+  FaSun 
 } from "react-icons/fa";
 import { 
   HiOutlineHome,
@@ -13,7 +14,6 @@ import {
   HiOutlineChatAlt
 } from "react-icons/hi";
 import { useTheme } from "./ThemeProvider";
-import { FaSun } from "react-icons/fa";
 
 const Navbar = ({ activeSection, setActiveSection }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -148,25 +148,33 @@ const Navbar = ({ activeSection, setActiveSection }) => {
       </div>
 
       {/* Mobile Menu */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden">
-          <div className={`px-2 pt-2 pb-3 space-y-1 ${
+        <div className="md:hidden fixed inset-0 z-40">
+          {/* Background Overlay with Blur */}
+          <div 
+            onClick={() => setIsOpen(false)} 
+            className="absolute inset-0 backdrop-blur-md bg-black/40"
+          />
+
+          {/* Menu Panel */}
+          <div className={`absolute top-16 left-0 w-full flex flex-col items-center space-y-4 py-6 rounded-b-2xl shadow-2xl transition-all duration-300 z-50 ${
             isDarkMode 
-              ? 'bg-slate-900/98 backdrop-blur-md shadow-xl border-t border-cyan-500/20'
-              : 'bg-white/98 backdrop-blur-md shadow-xl border-t border-blue-500/20'
+              ? 'bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-gray-200 border-t border-cyan-500/20'
+              : 'bg-gradient-to-b from-white via-slate-50 to-white text-gray-800 border-t border-blue-500/20'
           }`}>
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-all duration-300 flex items-center gap-3 ${
+                className={`w-10/12 py-3 rounded-xl text-lg font-medium flex items-center justify-center gap-3 transition-all duration-300 ${
                   activeSection === item.id
                     ? isDarkMode
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white'
-                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
+                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg'
+                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
                     : isDarkMode
-                      ? 'text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-cyan-600/20 hover:to-blue-600/20'
-                      : 'text-gray-600 hover:text-slate-800 hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-indigo-600/20'
+                      ? 'hover:bg-slate-700 hover:text-white'
+                      : 'hover:bg-slate-200 hover:text-slate-900'
                 }`}
               >
                 {item.icon}
@@ -176,6 +184,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           </div>
         </div>
       )}
+
     </nav>
   );
 };
