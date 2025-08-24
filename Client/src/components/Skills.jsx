@@ -68,9 +68,7 @@ const Skills = () => {
       skills: [
         { name: "Node.js", icon: <FaNodeJs />, color: "text-green-500" },
         { name: "Express.js", icon: <SiExpress />, color: "text-gray-300" },
-        { name: "Python", icon: <FaPython />, color: "text-yellow-400" },
-        { name: "Java", icon: <FaJava />, color: "text-red-500" },
-        { name: "Spring Boot", icon: <SiSpringboot />, color: "text-green-600" },
+        // { name: "Spring Boot", icon: <SiSpringboot />, color: "text-green-600" },
       ],
     },
     {
@@ -87,9 +85,18 @@ const Skills = () => {
       icon: <HiOutlineCode />,
       skills: [
         { name: "Git", icon: <SiGit />, color: "text-orange-500" },
-        { name: "Docker", icon: <SiDocker />, color: "text-blue-500" },
+        // { name: "Docker", icon: <SiDocker />, color: "text-blue-500" },
         { name: "VS Code", icon: <HiOutlineTerminal />, color: "text-cyan-400" },
         { name: "AI/ML", icon: <FaBrain />, color: "text-pink-500" },
+      ],
+    },
+    {
+      title: "Programming Languages",
+      icon: <HiOutlineServer />,
+      skills: [
+        { name: "Python", icon: <FaPython />, color: "text-yellow-400" },
+        { name: "Java", icon: <FaJava />, color: "text-red-500" },
+        // { name: "Spring Boot", icon: <SiSpringboot />, color: "text-green-600" },
       ],
     },
   ];
