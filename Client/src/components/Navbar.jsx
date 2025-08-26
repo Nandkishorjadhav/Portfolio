@@ -1,4 +1,3 @@
-// Navbar.js
 import React, { useState, useEffect } from "react";
 import { 
   FaBars, 
@@ -55,14 +54,17 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   const handleNavClick = (sectionId) => {
     setActiveSection(sectionId);
     setIsOpen(false);
-    
+
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop - 60;
+      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 60;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
+        top: Math.min(offsetTop, maxScroll),
+        behavior: "smooth"
       });
+    } else {
+      console.error(`Section with id "${sectionId}" not found`);
     }
   };
 
@@ -147,7 +149,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
         </div>
       </div>
 
-            {/* Mobile Menu */}
+      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-40">
           {/* Background Overlay with Blur */}
@@ -183,8 +185,6 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           </div>
         </div>
       )}
-
-
     </nav>
   );
 };

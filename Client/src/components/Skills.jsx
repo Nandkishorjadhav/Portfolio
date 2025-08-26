@@ -28,6 +28,7 @@ import {
   HiOutlineTerminal,
 } from "react-icons/hi";
 import { useTheme } from "./ThemeProvider";
+import resume from '../assets/Resume.pdf'
 
 const Skills = () => {
   const { isDarkMode } = useTheme();
@@ -142,7 +143,9 @@ const Skills = () => {
         </div>
 
         <div className="text-center">
-          <button
+          <a
+            href={resume}
+            download="Resume.pdf"
             className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${
               isDarkMode
                 ? "from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-cyan-500/25"
@@ -151,7 +154,7 @@ const Skills = () => {
           >
             <HiOutlineDownload />
             Download Resume
-          </button>
+          </a>
         </div>
       </div>
     </section>
