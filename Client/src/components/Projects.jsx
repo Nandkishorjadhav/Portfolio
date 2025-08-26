@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTheme } from "./ThemeProvider";
 import { motion, AnimatePresence } from "framer-motion";
+import Pragyaa from "../assets/Pragyaa.png"
 
 const Projects = () => {
   const { isDarkMode } = useTheme();
@@ -40,7 +41,7 @@ const Projects = () => {
         "Tailwind CSS",
         "PostgreSQL",
       ],
-      image: "https://via.placeholder.com/600x400?text=Project+Three",
+      image: Pragyaa,
       liveLink: "https://pragyaa-2k25.vercel.app/",
       sourceLink: "https://github.com/Nandkishorjadhav/Pragyaa-2k25",
     },

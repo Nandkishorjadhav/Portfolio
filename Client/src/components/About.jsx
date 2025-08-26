@@ -53,8 +53,8 @@ const About = () => {
   }, [isDarkMode, isHovered]);
 
   return (
-    <section id="about" className={`min-h-screen flex items-center justify-center bg-gradient-to-br ${bgGradient} p-6 pt-20`}>
-      <div className="max-w-4xl w-full flex flex-col md:flex-row items-center justify-between">
+    <section id="about" className={`min-h-screen flex items-center justify-center bg-gradient-to-br ${bgGradient} p-2 m-0 pt-5 `}>
+      <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between pd-10">
         {/* Left: About Text */}
         <div className="md:w-1/2 p-6 text-left">
           <h1 className={`text-4xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}>About Me</h1>
