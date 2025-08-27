@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { Github, Linkedin, Twitter, Mail, MapPin } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import axios from "axios";
 
 const Contact = () => {
   const { isDarkMode } = useTheme(); // Add useTheme hook
@@ -15,16 +16,18 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (formData.name && formData.email && formData.message) {
-      const subject = encodeURIComponent(`Message from ${formData.name}`);
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-      const mailtoLink = `mailto:nandkishorjadhav9580@gmail.com?subject=${subject}&body=${body}`;
-      window.location.href = mailtoLink;
-      alert('Thank you for your message! Your email client should open now.');
-      setFormData({ name: "", email: "", message: "" });
+      try {
+        await axios.post("http://localhost:3000/api/contact", formData);
+        setStatus("✅ Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } catch (err) {
+        setStatus("❌ Failed to send message. Please try again.");
+        console.error(err);
+      }
     } else {
-      alert('Please fill in all fields.');
+      setStatus("⚠️ Please fill in all fields.");
     }
   };
 
@@ -52,8 +55,8 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: <Mail className="w-5 h-5" />,
-      value: "nandkishorjadhav9580@gmail.com",
-      link: "mailto:nandkishorjadhav9580@gmail.com",
+      value: "nandupatiljadhav660@gmail.com",
+      link: "mailto:nandupatiljadhav660@gmail.com",
       gradientClass: isDarkMode ? "from-cyan-400 to-blue-400" : "from-blue-600 to-indigo-600",
     },
     {

@@ -19,7 +19,7 @@ const Home = () => {
   };
 
   const handleAnimationComplete = () => {
-    console.log('All letters have animated!');
+    // console.log('All letters have animated!');
   };
 
   // Background gradient with #393E46 + #00ADB5 for dark mode

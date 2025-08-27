@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { useTheme } from "./ThemeProvider";
 import { motion, AnimatePresence } from "framer-motion";
 import Pragyaa from "../assets/Pragyaa.png"
+import axios from "axios";
+
 
 const Projects = () => {
   const { isDarkMode } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/projects")
+      .then((res) => setProjects(res.data))
+      .catch((err) => console.error("Error fetching projects:", err));
+  }, []);
 
   const bgGradient = isDarkMode
     ? "from-slate-900 via-cyan-900 to-slate-900"
