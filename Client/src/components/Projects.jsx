@@ -1,9 +1,11 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "./ThemeProvider";
 import { motion, AnimatePresence } from "framer-motion";
-import Pragyaa from "../assets/Pragyaa.png"
+import Pragyaa from "../assets/Pragyaa.png";
+import Hacknova from '../assets/Hacknova.jpg'
+import AI from '../assets/Ai.png'
+import Quiz from '../assets/Quiz.png'
 import axios from "axios";
-
 
 const Projects = () => {
   const { isDarkMode } = useTheme();
@@ -11,7 +13,8 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/projects")
+    axios
+      .get("http://localhost:3000/api/projects")
       .then((res) => setProjects(res.data))
       .catch((err) => console.error("Error fetching projects:", err));
   }, []);
@@ -34,17 +37,16 @@ const Projects = () => {
   const modalBg = isDarkMode ? "bg-slate-800/90" : "bg-white/90";
   const modalBorder = isDarkMode ? "border-slate-600" : "border-gray-200";
 
-  // Sample project data
   const projects = [
     {
       title: "Pragyaa Tech Event Website",
-      description:
-        "It is website of my college fest.",
+      description: "It is website of my college fest.",
       detailedDescription:
         "Project Three is a mobile-responsive dashboard built for data analytics, featuring interactive charts and real-time data updates. It uses D3.js for visualizations and integrates with a REST API for dynamic data fetching, optimized for both desktop and mobile devices.",
       technologies: [
-        "React",
-        "D3.js",
+        "React.js",
+        "Node.js",
+        "Express.js",
         "REST API",
         "Tailwind CSS",
         "PostgreSQL",
@@ -60,13 +62,15 @@ const Projects = () => {
       detailedDescription:
         "Project Two is a feature-rich e-commerce platform with advanced search capabilities powered by Elasticsearch and secure payment integration via Stripe. It offers a user-friendly interface, product filtering, and a seamless checkout experience.",
       technologies: [
-        "React",
-        "Elasticsearch",
-        "Stripe",
+        "React.js",
+        "Node.js",
+        "Express.js",
         "Tailwind CSS",
-        "Express",
+        "MongoDB",
+        "Websockets",
+        "JWT Tokens",
       ],
-      image: "https://via.placeholder.com/600x400?text=Project+Two",
+      image: Hacknova,
       liveLink: "https://example.com/project-two",
       sourceLink: "https://github.com/Nandkishorjadhav/HackNova",
     },
@@ -76,20 +80,24 @@ const Projects = () => {
         "A modern web application built with React and Node.js, featuring real-time useful and free AI tools.",
       detailedDescription:
         "It includes all free AI tools in different category for different use with their link. It integrates a React frontend with a Node.js backend, leveraging WebSocket for seamless data updates. The app includes user authentication, real-time analytics, and a responsive design.",
-      technologies: [
-        "React",
-        "Node.js",
-        "WebSocket",
-        "Tailwind CSS",
-        "MongoDB",
-      ],
-      image: "https://via.placeholder.com/600x400?text=Project+One",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      image: AI,
       liveLink: "https://example.com/project-one",
       sourceLink: "https://github.com/Nandkishorjadhav/Engineering-Exploration",
     },
+    {
+      title: Quiz,
+      description:
+        "An interactive web-based quiz platform that helps students test and improve their knowledge across programming and database subjects.",
+      detailedDescription:
+        "QuizApp is a full-stack web application that enables users to practice and evaluate their knowledge in programming topics such as Java, JavaScript, SQL, Python, C++, and more. It features real-time performance tracking, role-based dashboards for students and faculty, and a polished UI with smooth animations. Built with React, Spring Boot, PostgreSQL, and WebSockets, it provides both a dynamic learning experience and robust backend support.",
+      technologies: ["React", "Spring Boot", "Tailwind CSS", "PostgreSQL"],
+      image: "https://via.placeholder.com/600x400?text=Quiz+App",
+      liveLink: "https://github.com/Nandkishorjadhav/QuizMaster",
+      sourceLink: "https://github.com/Nandkishorjadhav/QuizMaster",
+    },
   ];
 
-  // Modal handlers
   const openModal = (project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
@@ -100,7 +108,6 @@ const Projects = () => {
     setSelectedProject(null);
   };
 
-  // Animation variants for modal
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 100 },
     visible: {
@@ -134,11 +141,12 @@ const Projects = () => {
           Explore some of my recent work
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* 4 columns grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className={`relative ${cardBg} ${cardBorder} border rounded-2xl p-4 md:p-6 shadow-md backdrop-blur-sm`}
+              className={`relative ${cardBg} ${cardBorder} border rounded-xl p-3 md:p-4 shadow-md backdrop-blur-sm`}
               whileHover={{
                 scale: 1.05,
                 shadow: "lg",
@@ -146,30 +154,33 @@ const Projects = () => {
               }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="flex flex-col items-center">
-                <div className="w-full mb-6">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-32 md:h-48 object-cover rounded-lg shadow-md"
-                  />
-                </div>
-                <div className="flex-1 text-center mb-6">
-                  <h3
-                    className={`text-2xl md:text-3xl font-semibold ${textColor} mb-4`}
-                  >
-                    {project.title}
-                  </h3>
-                  <p className={`${subTextColor} mb-6 text-sm md:text-base`}>
-                    {project.description}
-                  </p>
-                </div>
+              {/* Flex column ensures button is at bottom */}
+              <div className="flex flex-col justify-between h-full">
                 <div>
+                  <div className="w-full mb-4">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-28 md:h-36 object-cover rounded-lg shadow-md"
+                    />
+                  </div>
+                  <div className="flex-1 text-center mb-4">
+                    <h3
+                      className={`text-lg md:text-xl font-semibold ${textColor} mb-2`}
+                    >
+                      {project.title}
+                    </h3>
+                    <p className={`${subTextColor} mb-4 text-xs md:text-sm`}>
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-auto text-center">
                   <button
                     onClick={() => openModal(project)}
-                    className={`inline-block px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${titleGradient} hover:opacity-90 transition-opacity duration-300 cursor-pointer`}
+                    className={`inline-block px-4 py-2 rounded-lg font-medium text-white bg-gradient-to-r ${titleGradient} hover:opacity-90 transition-opacity duration-300 cursor-pointer text-sm`}
                   >
-                    View Project
+                    View More
                   </button>
                 </div>
               </div>
@@ -201,11 +212,11 @@ const Projects = () => {
                 }
               }}
               className={`relative ${modalBg} ${modalBorder} border rounded-2xl p-6 md:p-8 max-w-3xl w-full mx-auto shadow-2xl backdrop-blur-sm`}
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
+              onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={closeModal}
-                className={`absolute top-4 right-4 ${buttonBg} text-white p-2 rounded-full transition-all duration-300`}
+                className={`absolute top-4 right-4 ${buttonBg} text-white p-2 rounded-full transition-all duration-300 cursor-pointer`}
                 aria-label="Close modal"
               >
                 <svg

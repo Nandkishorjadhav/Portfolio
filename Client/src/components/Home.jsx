@@ -142,7 +142,7 @@ const Home = () => {
         </div>
 
         {/* Social Icons */}
-        <div className="flex justify-center md:justify-start gap-6 text-3xl">
+        <div className="flex justify-center md:justify-start gap-6 text-3xl mb-5">
           <a
             href="https://github.com/Nandkishorjadhav"
             target="_blank"

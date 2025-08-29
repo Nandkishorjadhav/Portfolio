@@ -15,13 +15,11 @@ import {
 import { useTheme } from "./ThemeProvider";
 
 const Navbar = ({ activeSection, setActiveSection }) => {
-  // console.log('Navbar rendering'); 
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
-    // console.log('Navbar useEffect running'); 
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
       setScrolled(isScrolled);
@@ -38,7 +36,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             break;
           }
         } else {
-          console.warn(`Section with id "${section}" not found`); // Debug: Log missing sections
+          console.warn(`Section with id "${section}" not found`);
         }
       }
     };
@@ -56,7 +54,6 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   ];
 
   const handleNavClick = (sectionId) => {
-    console.log('Navigating to:', sectionId); // Debug: Confirm click
     setActiveSection(sectionId);
     setIsOpen(false);
 
@@ -89,12 +86,74 @@ const Navbar = ({ activeSection, setActiveSection }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 relative group">
             <button
               onClick={() => handleNavClick('home')}
-              className={`text-2xl font-bold bg-gradient-to-r ${logoGradient} bg-clip-text text-transparent hover:scale-110 transition-all duration-300`}
+              className={`relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 group-hover:scale-105 transition-all duration-500 ease-out`}
             >
-              NJ
+              {/* Abstract Signature Shape */}
+              <svg
+                className="w-full h-full"
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Background Circle with Gradient */}
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="url(#logoGradient)"
+                  className="opacity-20 group-hover:opacity-40 transition-opacity duration-500"
+                />
+                {/* Signature Path */}
+                <path
+                  d="M20 70 Q30 50, 50 50 T80 30 Q70 50, 50 70 T20 50 Q30 30, 50 30 T80 50"
+                  stroke="url(#logoGradient)"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  className="animate-draw"
+                />
+                {/* Orbital Path Animation */}
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  stroke="url(#logoGradient)"
+                  strokeWidth="2"
+                  strokeDasharray="10 5"
+                  className="opacity-0 group-hover:opacity-30 group-hover:animate-spin-slow"
+                />
+                {/* Particle Sparks */}
+                <circle
+                  cx="80"
+                  cy="20"
+                  r="3"
+                  fill="white"
+                  className="opacity-0 group-hover:opacity-60 group-hover:animate-ping"
+                />
+                <circle
+                  cx="20"
+                  cy="80"
+                  r="3"
+                  fill="white"
+                  className="opacity-0 group-hover:opacity-60 group-hover:animate-ping delay-200"
+                />
+                {/* Gradient Definition */}
+                <defs>
+                  <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: isDarkMode ? '#22d3ee' : '#2563eb' }} />
+                    <stop offset="100%" style={{ stopColor: isDarkMode ? '#3b82f6' : '#4f46e5' }} />
+                  </linearGradient>
+                </defs>
+              </svg>
+              {/* NKJ Text Overlay */}
+              <span
+                className={`absolute text-xl sm:text-2xl font-bold text-white drop-shadow-md transform group-hover:scale-110 transition-transform duration-300`}
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                NKJ
+              </span>
             </button>
           </div>
 
@@ -157,13 +216,10 @@ const Navbar = ({ activeSection, setActiveSection }) => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-40">
-          {/* Background Overlay with Blur */}
           <div 
             onClick={() => setIsOpen(false)} 
             className="absolute inset-0 backdrop-blur-md bg-black/40"
           />
-
-          {/* Menu Panel */}
           <div className={`absolute top-16 left-0 w-full flex flex-col items-center space-y-4 py-6 rounded-b-2xl shadow-2xl transition-all duration-300 z-50 ${
             isDarkMode 
               ? 'bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-gray-200 border-t border-cyan-500/20'
@@ -190,6 +246,42 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+        @keyframes draw {
+          0% {
+            stroke-dashoffset: 1000;
+          }
+          100% {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes spin-slow {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-draw {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: draw 2s ease-out forwards;
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 10s linear infinite;
+        }
+
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+      `}</style>
     </nav>
   );
 };
