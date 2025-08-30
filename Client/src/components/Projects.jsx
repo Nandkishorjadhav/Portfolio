@@ -3,7 +3,7 @@ import { useTheme } from "./ThemeProvider";
 import { motion, AnimatePresence } from "framer-motion";
 import Pragyaa from "../assets/Pragyaa.png";
 import Hacknova from '../assets/Hacknova.jpg'
-import AI from '../assets/Ai.png'
+import AI from '../assets/AI.png'
 import Quiz from '../assets/Quiz.png'
 import axios from "axios";
 
