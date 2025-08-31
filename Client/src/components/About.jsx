@@ -125,7 +125,7 @@ const About = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSection(prev => (prev + 1) % sections.length);
-    }, 4000);
+    }, 7500);
     return () => clearInterval(interval);
   }, []);
 

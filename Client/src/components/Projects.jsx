@@ -82,7 +82,7 @@ const Projects = () => {
         "It includes all free AI tools in different category for different use with their link. It integrates a React frontend with a Node.js backend, leveraging WebSocket for seamless data updates. The app includes user authentication, real-time analytics, and a responsive design.",
       technologies: ["HTML", "CSS", "JavaScript"],
       image: AI,
-      liveLink: "https://example.com/project-one",
+      liveLink: "https://quiz-master-three-henna.vercel.app/",
       sourceLink: "https://github.com/Nandkishorjadhav/Engineering-Exploration",
     },
     {
