@@ -60,12 +60,12 @@ const Contact = () => {
       link: "mailto:nandupatiljadhav660@gmail.com",
       gradientClass: isDarkMode ? "from-cyan-400 to-blue-400" : "from-blue-600 to-indigo-600",
     },
-    {
-      icon: <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />,
-      value: "Nanded, Maharashtra, India",
-      link: "https://www.google.com/maps/place/Nanded,+Maharashtra,+India/@19.1382513,77.3010339,13z",
-      gradientClass: isDarkMode ? "from-blue-400 to-indigo-400" : "from-blue-600 to-indigo-600",
-    },
+    // {
+    //   icon: <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />,
+    //   value: "Nanded, Maharashtra, India",
+    //   link: "https://www.google.com/maps/place/Nanded,+Maharashtra,+India/@19.1382513,77.3010339,13z",
+    //   gradientClass: isDarkMode ? "from-blue-400 to-indigo-400" : "from-blue-600 to-indigo-600",
+    // },
   ];
 
   // Theme-based styles
