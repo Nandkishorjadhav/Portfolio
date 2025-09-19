@@ -24,7 +24,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
       const isScrolled = window.scrollY > 10;
       setScrolled(isScrolled);
 
-      const sections = ['home', 'about', 'projects', 'skills', 'contact'];
+      const sections = ['home', 'about', 'projects', 'skills','experience', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -50,6 +50,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
     { name: 'About', id: 'about', icon: <HiOutlineUser /> },
     { name: 'Projects', id: 'projects', icon: <HiOutlineCollection /> },
     { name: 'Skills', id: 'skills', icon: <HiOutlineAcademicCap /> },
+    { name: 'Experience', id: 'experience', icon: <HiOutlineAcademicCap /> },
     { name: 'Contact', id: 'contact', icon: <HiOutlineChatAlt /> }
   ];
 
