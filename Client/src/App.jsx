@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import ThemeProvider from './components/ThemeProvider'
+import Experience from './components/Experience';
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -19,6 +20,7 @@ return (
         <About />
         <Projects />
         <Skills />
+        <Experience />
         <Contact />
       </div>
     </ThemeProvider>

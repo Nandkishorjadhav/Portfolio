@@ -288,3 +288,76 @@ const Navbar = ({ activeSection, setActiveSection }) => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // id: 2,
+      // title: "Internship Experience",
+      // icon: <FaBriefcase />,
+      // color: isDarkMode ? "#84CC16" : "#F97316",
+      // experiences: [
+      //   {
+      //     title: "Full Stack Developer Intern",
+      //     organization: "Naugaya Technology Pvt Ltd",
+      //     duration: "Sept 2025 - Nov 2025",
+      //     location: "Remote",
+      //     description: "Worked on developing and maintaining web applications using MERN stack. Collaborated with senior developers and participated in code reviews.",
+      //     achievements: [
+      //       "Working on one big project",
+      //       "Improved application performance by 30%"
+      //     ],
+      //     skills: ["React.js", "Node.js", "MongoDB", "Git", "Express.js"]
+      //   },
+
+
+  ///college club
+      // id: 0,
+      // title: "College Club Experience",
+      // icon: <FaGraduationCap />,
+      // color: isDarkMode ? "#06B6D4" : "#4F46E5",
+      // experiences: [
+      //   {
+      //     title: "Web Co-Lead",
+      //     organization: "Google Developers Group on Campus (GDG)",
+      //     duration: "August 2025 - Present",
+      //     location: "SGGSIE&T Nanded, Maharashtra",
+      //     description: "Led a team of 5+ students in organizing technical workshops and hackathons. Mentored junior students in web development and organized coding competitions.",
+      //   //   achievements: [
+      //   //     "Organized 5+ technical workshops with 200+ participants",
+      //   //     "Increased club membership by 40%",
+      //   //     "Led development of club's official website"
+      //   //   ],
+      //     skills: ["Leadership", "Event Management", "Mentoring", "MERN Stack"]
+      //   },
+      //   {
+      //     title: "Junior Website Developer",
+      //     organization: "Pragyaa",
+      //     duration: "Nov 2024 - Feb 2025",
+      //     location: "SGGSIE&T Nanded, Maharashtra",
+      //     description: "Coordinated programming workshops and coding bootcamps for students. Managed event logistics and collaborated with industry professionals.",
+      //     achievements: [
+      //       "Conducted 3 successful coding bootcamps",
+      //       "Collaborated with 10+ industry mentors",
+      //       "Achieved 95% participant satisfaction rate"
+      //     ],
+      //     skills: ["Event Planning", "Communication", "Python", "JavaScript"]
+      //   }
+      // ]
