@@ -16,7 +16,7 @@ import { useTheme } from "./ThemeProvider";
 const Experience = () => {
   const { isDarkMode } = useTheme();
   const [activeCategory, setActiveCategory] = useState(0);
-  const [visibleExperiences, setVisibleExperiences] = useState(new Set());
+  const [visibleExperiences, setVisibleExperiences] = useState(new Set([0, 1])); // Show first two by default
   const observerRef = useRef();
 
   // Color palette
@@ -36,7 +36,8 @@ const Experience = () => {
   const categories = [
     {
       id: 0,
-      title: "College Club Experience",
+      title: "College Club",
+      shortTitle: "Club", // For mobile
       icon: <FaGraduationCap />,
       color: isDarkMode ? "#06B6D4" : "#4F46E5",
       experiences: [
@@ -68,43 +69,10 @@ const Experience = () => {
         }
       ]
     },
-    // {
-    //   id: 1,
-    //   title: "Hackathon Experience",
-    //   icon: <FaTrophy />,
-    //   color: isDarkMode ? "#EC4899" : "#EC4899",
-    //   experiences: [
-    //     {
-    //       title: "1st Prize Winner",
-    //       organization: "HackNova 2024",
-    //       duration: "March 2024",
-    //       location: "Mumbai, Maharashtra",
-    //       description: "Developed an innovative e-commerce platform with AI-powered recommendation system. Led a team of 4 developers in a 48-hour hackathon.",
-    //       achievements: [
-    //         "1st place among 150+ teams",
-    //         "₹50,000 prize money",
-    //         "Featured in college newsletter"
-    //       ],
-    //       skills: ["React.js", "Node.js", "MongoDB", "AI/ML", "Team Leadership"]
-    //     },
-    //     {
-    //       title: "Finalist",
-    //       organization: "Smart India Hackathon",
-    //       duration: "September 2023",
-    //       location: "Online",
-    //       description: "Developed a solution for smart city management using IoT and machine learning. Reached final round among top 100 teams nationwide.",
-    //       achievements: [
-    //         "Top 100 teams nationally",
-    //         "Mentorship from industry experts",
-    //         "Certificate of Excellence"
-    //       ],
-    //       skills: ["IoT", "Machine Learning", "Python", "Data Analytics"]
-    //     }
-    //   ]
-    // },
     {
-      id: 2,
-      title: "Internship Experience",
+      id: 1,
+      title: "Internship",
+      shortTitle: "Internship",
       icon: <FaBriefcase />,
       color: isDarkMode ? "#84CC16" : "#F97316",
       experiences: [
@@ -120,20 +88,7 @@ const Experience = () => {
             "Collaborated with 5+ senior developers"
           ],
           skills: ["React.js", "Node.js", "MongoDB", "Git", "Express.js"]
-        },
-        // {
-        //   title: "Frontend Developer Intern",
-        //   organization: "StartupHub",
-        //   duration: "Dec 2023 - Feb 2024",
-        //   location: "Remote",
-        //   description: "Focused on frontend development using React.js and implementing responsive designs. Worked closely with UI/UX team to create user-friendly interfaces.",
-        //   achievements: [
-        //     "Built 5+ responsive web pages",
-        //     "Implemented pixel-perfect designs",
-        //     "Reduced page load time by 25%"
-        //   ],
-        //   skills: ["React.js", "Tailwind CSS", "JavaScript", "Figma", "Responsive Design"]
-        // }
+        }
       ]
     }
   ];
@@ -149,11 +104,16 @@ const Experience = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     return () => observerRef.current?.disconnect();
   }, []);
+
+  // Reset visible experiences when category changes
+  useEffect(() => {
+    setVisibleExperiences(new Set([0])); // Show first experience immediately
+  }, [activeCategory]);
 
   // Animation variants
   const timelineVariants = {
@@ -161,7 +121,7 @@ const Experience = () => {
     visible: { 
       scaleY: 1,
       transition: { 
-        duration: 2,
+        duration: 1.5,
         ease: "easeInOut"
       }
     }
@@ -170,17 +130,17 @@ const Experience = () => {
   const cardVariants = {
     hidden: { 
       opacity: 0, 
-      x: -100,
-      scale: 0.8
+      x: -50,
+      scale: 0.9
     },
     visible: { 
       opacity: 1, 
       x: 0,
       scale: 1,
       transition: { 
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut",
-        delay: 0.2
+        delay: 0.1
       }
     }
   };
@@ -188,233 +148,214 @@ const Experience = () => {
   const divingVariants = {
     hidden: { 
       opacity: 0, 
-      y: -50,
-      rotate: -10
+      y: -30,
+      scale: 0
     },
     visible: { 
       opacity: 1, 
       y: 0,
-      rotate: 0,
+      scale: 1,
       transition: { 
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut"
       }
     }
   };
 
   return (
-    <>
-      <section 
-        id="experience" 
-        className={`min-h-screen bg-gradient-to-br ${bgGradient} py-20 px-6`}
-      >
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className={`text-4xl md:text-5xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}>
-              My Experience Journey
-            </h2>
-            <p className={`text-xl ${subTextColor} mb-8`}>
-              From college clubs to internships - my growth story
-            </p>
-          </motion.div>
+    <section 
+      id="experience" 
+      className={`min-h-screen bg-gradient-to-br ${bgGradient} py-16 px-4 sm:px-6 lg:px-8`}
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-12 sm:mb-16"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}>
+            My Experience Journey
+          </h2>
+          <p className={`text-lg sm:text-xl ${subTextColor} mb-8 px-4`}>
+            From college clubs to internships - my growth story
+          </p>
+        </motion.div>
 
-          {/* Category Selector */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category, index) => (
-              <motion.button
-                key={category.id}
-                onClick={() => setActiveCategory(index)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeCategory === index
-                    ? `bg-gradient-to-r text-white shadow-lg`
-                    : `${cardBg} ${textColor} hover:scale-105`
-                }`}
-                style={{
-                  background: activeCategory === index 
-                    ? `linear-gradient(to right, ${category.color}, #4F46E5)` 
-                    : undefined
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className="text-lg">{category.icon}</span>
-                {category.title}
-              </motion.button>
-            ))}
-          </div>
+        {/* Category Selector - Improved for mobile */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4">
+          {categories.map((category, index) => (
+            <motion.button
+              key={category.id}
+              onClick={() => setActiveCategory(index)}
+              className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium text-sm sm:text-base transition-all duration-300 ${
+                activeCategory === index
+                  ? `text-white shadow-lg scale-105`
+                  : `${cardBg} ${textColor} hover:scale-105`
+              }`}
+              style={{
+                background: activeCategory === index 
+                  ? `linear-gradient(to right, ${category.color}, #4F46E5)` 
+                  : undefined
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="text-base sm:text-lg">{category.icon}</span>
+              <span className="hidden sm:inline">{category.title}</span>
+              <span className="sm:hidden">{category.shortTitle}</span>
+            </motion.button>
+          ))}
+        </div>
 
-          {/* Timeline Container */}
-          <div className="relative">
-            {/* Animated Timeline Line */}
+        {/* Timeline Container - Improved for mobile */}
+        <div className="relative px-2 sm:px-0">
+          {/* Animated Timeline Line - Responsive positioning */}
+          <motion.div
+            className="absolute left-4 sm:left-8 top-0 w-0.5 sm:w-1 bg-gradient-to-b from-[#06B6D4] to-[#4F46E5] origin-top"
+            style={{ height: "100%" }}
+            variants={timelineVariants}
+            initial="hidden"
+            animate="visible"
+          />
+
+          {/* Experience Cards */}
+          <AnimatePresence mode="wait">
             <motion.div
-              className="absolute left-8 top-0 w-1 bg-gradient-to-b from-[#06B6D4] to-[#4F46E5] origin-top"
-              style={{ height: "100%" }}
-              variants={timelineVariants}
-              initial="hidden"
-              animate="visible"
-            />
-
-            {/* Experience Cards */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeCategory}
-                className="space-y-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                {categories[activeCategory].experiences.map((exp, index) => (
+              key={activeCategory}
+              className="space-y-6 sm:space-y-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              {categories[activeCategory].experiences.map((exp, index) => (
+                <motion.div
+                  key={index}
+                  ref={(el) => {
+                    if (el) {
+                      el.dataset.index = index;
+                      observerRef.current?.observe(el);
+                    }
+                  }}
+                  className="relative pl-12 sm:pl-20"
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate="visible" // Always show, don't wait for intersection
+                  transition={{ delay: index * 0.2 }} // Stagger animation
+                >
+                  {/* Timeline Node - Responsive positioning */}
                   <motion.div
-                    key={index}
-                    ref={(el) => {
-                      if (el) {
-                        el.dataset.index = index;
-                        observerRef.current?.observe(el);
-                      }
+                    className="absolute left-2.5 sm:left-6 top-4 sm:top-6 w-4 h-4 sm:w-6 sm:h-6 rounded-full border-2 sm:border-4 border-white shadow-lg"
+                    style={{
+                      background: `linear-gradient(to right, ${categories[activeCategory].color}, #4F46E5)`
                     }}
-                    className="relative pl-20"
-                    variants={cardVariants}
+                    variants={divingVariants}
                     initial="hidden"
-                    animate={visibleExperiences.has(index) ? "visible" : "hidden"}
+                    animate="visible"
+                    transition={{ delay: index * 0.3 }}
+                  />
+
+                  {/* Experience Card - Improved mobile layout */}
+                  <motion.div
+                    className={`${cardBg} backdrop-blur-md border rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-300`}
+                    whileHover={{ scale: 1.01, y: -2 }}
                   >
-                    {/* Timeline Node */}
-                    <motion.div
-                      className="absolute left-6 top-6 w-6 h-6 rounded-full border-4 border-white shadow-lg"
-                      style={{
-                        background: `linear-gradient(to right, ${categories[activeCategory].color}, #4F46E5)`
-                      }}
-                      variants={divingVariants}
-                      initial="hidden"
-                      animate={visibleExperiences.has(index) ? "visible" : "hidden"}
-                    />
+                    <div className="flex flex-col gap-3 sm:gap-4">
+                      <div className="flex-1">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2">
+                          <h3 className={`text-lg sm:text-xl font-bold ${textColor}`}>
+                            {exp.title}
+                          </h3>
+                          <FaChevronRight className={`text-xs sm:text-sm ${subTextColor} hidden sm:inline`} />
+                        </div>
+                        
+                        <p className={`text-base sm:text-lg font-semibold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-3 leading-tight`}>
+                          {exp.organization}
+                        </p>
 
-                    {/* Experience Card */}
-                    <motion.div
-                      className={`${cardBg} backdrop-blur-md border rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300`}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                    >
-                      <div className="flex flex-col md:flex-row md:items-start gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <h3 className={`text-xl font-bold ${textColor}`}>
-                              {exp.title}
-                            </h3>
-                            <FaChevronRight className={`text-sm ${subTextColor}`} />
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 text-xs sm:text-sm">
+                          <div className={`flex items-center gap-1 ${subTextColor}`}>
+                            <FaCalendarAlt />
+                            <span>{exp.duration}</span>
                           </div>
-                          
-                          <p className={`text-lg font-semibold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-3`}>
-                            {exp.organization}
-                          </p>
-
-                          <div className="flex flex-wrap items-center gap-4 mb-4 text-sm">
-                            <div className={`flex items-center gap-1 ${subTextColor}`}>
-                              <FaCalendarAlt />
-                              {exp.duration}
-                            </div>
-                            <div className={`flex items-center gap-1 ${subTextColor}`}>
-                              <FaMapMarkerAlt />
-                              {exp.location}
-                            </div>
+                          <div className={`flex items-center gap-1 ${subTextColor}`}>
+                            <FaMapMarkerAlt />
+                            <span>{exp.location}</span>
                           </div>
+                        </div>
 
-                          <p className={`${textColor} mb-4 leading-relaxed`}>
-                            {exp.description}
-                          </p>
+                        <p className={`${textColor} mb-4 text-sm sm:text-base leading-relaxed`}>
+                          {exp.description}
+                        </p>
 
-                          {/* Achievements - Fixed the undefined error */}
-                          {exp.achievements && exp.achievements.length > 0 && (
-                            <div className="mb-4">
-                              <h4 className={`font-semibold ${textColor} mb-2 flex items-center gap-2`}>
-                                <FaAward className={subTextColor} />
-                                Key Achievements
-                              </h4>
-                              <ul className="space-y-1">
-                                {exp.achievements.map((achievement, achIndex) => (
-                                  <li key={achIndex} className={`${subTextColor} text-sm flex items-start gap-2`}>
-                                    <span className="text-xs mt-1.5">•</span>
-                                    {achievement}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-
-                          {/* Skills */}
-                          <div>
-                            <h4 className={`font-semibold ${textColor} mb-2 flex items-center gap-2`}>
-                              <FaCode className={subTextColor} />
-                              Skills Used
+                        {/* Achievements */}
+                        {exp.achievements && exp.achievements.length > 0 && (
+                          <div className="mb-4">
+                            <h4 className={`font-semibold ${textColor} mb-2 flex items-center gap-2 text-sm sm:text-base`}>
+                              <FaAward className={`${subTextColor} text-sm`} />
+                              Key Achievements
                             </h4>
-                            <div className="flex flex-wrap gap-2">
-                              {exp.skills.map((skill, skillIndex) => (
-                                <span
-                                  key={skillIndex}
-                                  className={`px-3 py-1 rounded-full text-xs font-medium ${cardBg} border border-[#06B6D4]/20 ${subTextColor}`}
-                                >
-                                  {skill}
-                                </span>
+                            <ul className="space-y-1">
+                              {exp.achievements.map((achievement, achIndex) => (
+                                <li key={achIndex} className={`${subTextColor} text-xs sm:text-sm flex items-start gap-2`}>
+                                  <span className="text-xs mt-1 flex-shrink-0">•</span>
+                                  <span>{achievement}</span>
+                                </li>
                               ))}
-                            </div>
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Skills */}
+                        <div>
+                          <h4 className={`font-semibold ${textColor} mb-2 flex items-center gap-2 text-sm sm:text-base`}>
+                            <FaCode className={`${subTextColor} text-sm`} />
+                            Skills Used
+                          </h4>
+                          <div className="flex flex-wrap gap-1 sm:gap-2">
+                            {exp.skills.map((skill, skillIndex) => (
+                              <span
+                                key={skillIndex}
+                                className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${cardBg} border border-[#06B6D4]/20 ${subTextColor}`}
+                              >
+                                {skill}
+                              </span>
+                            ))}
                           </div>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   </motion.div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Stats Section */}
-          <motion.div
-            className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            {/* <div className={`${cardBg} backdrop-blur-md border rounded-xl p-6 text-center`}>
-              <div className={`text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}>
-                5+
-              </div>
-              <p className={subTextColor}>Total Experiences</p>
-            </div>
-            <div className={`${cardBg} backdrop-blur-md border rounded-xl p-6 text-center`}>
-              <div className={`text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}>
-                2
-              </div>
-              <p className={subTextColor}>Hackathon Wins</p>
-            </div>
-            <div className={`${cardBg} backdrop-blur-md border rounded-xl p-6 text-center`}>
-              <div className={`text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}>
-                5+
-              </div>
-              <p className={subTextColor}>Months Internship</p>
-            </div> */}
-          </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
-      </section>
 
-      {/* Custom CSS */}
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-    </>
+        {/* Stats Section - Hidden on mobile for better UX */}
+        <motion.div
+          className="mt-12 sm:mt-20 hidden sm:grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <div className={`${cardBg} backdrop-blur-md border rounded-xl p-4 sm:p-6 text-center`}>
+            <div className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}>
+              3+
+            </div>
+            <p className={`${subTextColor} text-sm sm:text-base`}>Total Experiences</p>
+          </div>
+          <div className={`${cardBg} backdrop-blur-md border rounded-xl p-4 sm:p-6 text-center`}>
+            <div className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}>
+              3+
+            </div>
+            <p className={`${subTextColor} text-sm sm:text-base`}>Months Experience</p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
