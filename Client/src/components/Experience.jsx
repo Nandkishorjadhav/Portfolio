@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { 
   FaGraduationCap, 
   FaTrophy, 
@@ -17,12 +17,17 @@ const Experience = () => {
   const { isDarkMode } = useTheme();
   const [activeCategory, setActiveCategory] = useState(0);
   const [visibleExperiences, setVisibleExperiences] = useState(new Set([0, 1])); // Show first two by default
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
   const observerRef = useRef();
+  const controls = useAnimation();
 
   // Color palette
   const bgGradient = isDarkMode
     ? "from-[#0F172A] via-[#06B6D4] to-[#0F172A]"
-    : "from-[#F9FAFB] via-[#4F46E5] to-[#06B6D4]";
+    : isMobile 
+      ? "from-white to-white"
+      : "from-[#F9FAFB] via-[#4F46E5] to-[#06B6D4]";
 
   const textColor = isDarkMode ? "text-[#E2E8F0]" : "text-[#1E293B]";
   const subTextColor = isDarkMode ? "text-[#06B6D4]" : "text-[#4F46E5]";
@@ -93,6 +98,17 @@ const Experience = () => {
     }
   ];
 
+  // Mobile detection
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
   // Intersection Observer for animations
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -115,19 +131,37 @@ const Experience = () => {
     setVisibleExperiences(new Set([0])); // Show first experience immediately
   }, [activeCategory]);
 
-  // Animation variants
+  // Animation variants - responsive to device type
   const timelineVariants = {
     hidden: { scaleY: 0 },
     visible: { 
       scaleY: 1,
       transition: { 
-        duration: 1.5,
+        duration: isMobile ? 1 : 1.5,
         ease: "easeInOut"
       }
     }
   };
 
-  const cardVariants = {
+  const cardVariants = isMobile ? {
+    hidden: { 
+      opacity: 0, 
+      rotateY: -90,
+      x: -100,
+      scale: 0.7
+    },
+    visible: { 
+      opacity: 1, 
+      rotateY: 0,
+      x: 0,
+      scale: 1,
+      transition: { 
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 0.1
+      }
+    }
+  } : {
     hidden: { 
       opacity: 0, 
       x: -50,
@@ -145,7 +179,24 @@ const Experience = () => {
     }
   };
 
-  const divingVariants = {
+  const divingVariants = isMobile ? {
+    hidden: { 
+      opacity: 0, 
+      scale: 0,
+      rotate: -180
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      rotate: 0,
+      transition: { 
+        duration: 0.6,
+        ease: "easeOut",
+        type: "spring",
+        bounce: 0.4
+      }
+    }
+  } : {
     hidden: { 
       opacity: 0, 
       y: -30,
@@ -160,6 +211,50 @@ const Experience = () => {
         ease: "easeOut"
       }
     }
+  };
+
+  // Mobile-specific animations
+  const mobileFloatingVariants = {
+    animate: {
+      y: [0, -10, 0],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  // Touch handlers for swipe functionality
+  const handleTouchStart = (e) => {
+    if (!isMobile) return;
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!isMobile || !touchStart) return;
+    
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && activeCategory < categories.length - 1) {
+        setActiveCategory(prev => prev + 1);
+        controls.start({
+          x: [-20, 0],
+          opacity: [0.7, 1],
+          transition: { duration: 0.3 }
+        });
+      } else if (diff < 0 && activeCategory > 0) {
+        setActiveCategory(prev => prev - 1);
+        controls.start({
+          x: [20, 0],
+          opacity: [0.7, 1],
+          transition: { duration: 0.3 }
+        });
+      }
+    }
+    setTouchStart(null);
   };
 
   return (
@@ -180,6 +275,16 @@ const Experience = () => {
           </h2>
           <p className={`text-lg sm:text-xl ${subTextColor} mb-8 px-4`}>
             From college clubs to internships - my growth story
+            {isMobile && (
+              <motion.span 
+                className="block text-sm mt-2 opacity-75"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
+                Swipe left or right to switch categories
+              </motion.span>
+            )}
           </p>
         </motion.div>
 
@@ -201,16 +306,31 @@ const Experience = () => {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              variants={isMobile ? mobileFloatingVariants : {}}
+              animate={isMobile && activeCategory === index ? "animate" : ""}
             >
-              <span className="text-base sm:text-lg">{category.icon}</span>
+              <motion.span 
+                className="text-base sm:text-lg"
+                animate={isMobile && activeCategory === index ? {
+                  rotate: [0, 360],
+                  transition: { duration: 2, repeat: Infinity, ease: "linear" }
+                } : {}}
+              >
+                {category.icon}
+              </motion.span>
               <span className="hidden sm:inline">{category.title}</span>
               <span className="sm:hidden">{category.shortTitle}</span>
             </motion.button>
           ))}
         </div>
 
-        {/* Timeline Container - Improved for mobile */}
-        <div className="relative px-2 sm:px-0">
+        {/* Timeline Container - Enhanced for mobile */}
+        <motion.div 
+          className="relative px-2 sm:px-0"
+          animate={controls}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {/* Animated Timeline Line - Responsive positioning */}
           <motion.div
             className="absolute left-4 sm:left-8 top-0 w-0.5 sm:w-1 bg-gradient-to-b from-[#06B6D4] to-[#4F46E5] origin-top"
@@ -219,6 +339,22 @@ const Experience = () => {
             initial="hidden"
             animate="visible"
           />
+
+          {/* Mobile pulse indicator */}
+          {isMobile && (
+            <motion.div
+              className="absolute left-3 sm:left-7 top-0 w-2 h-2 bg-[#06B6D4] rounded-full"
+              animate={{
+                scale: [1, 1.5, 1],
+                opacity: [1, 0.5, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          )}
 
           {/* Experience Cards */}
           <AnimatePresence mode="wait">
@@ -244,6 +380,11 @@ const Experience = () => {
                   initial="hidden"
                   animate="visible" // Always show, don't wait for intersection
                   transition={{ delay: index * 0.2 }} // Stagger animation
+                  whileInView={isMobile ? {
+                    scale: [0.95, 1.02, 1],
+                    transition: { duration: 0.3 }
+                  } : {}}
+                  viewport={{ once: false, amount: 0.3 }}
                 >
                   {/* Timeline Node - Responsive positioning */}
                   <motion.div
@@ -255,12 +396,17 @@ const Experience = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: index * 0.3 }}
+                    whileHover={isMobile ? {
+                      scale: 1.3,
+                      transition: { duration: 0.2 }
+                    } : {}}
                   />
 
                   {/* Experience Card - Improved mobile layout */}
                   <motion.div
                     className={`${cardBg} backdrop-blur-md border rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-300`}
-                    whileHover={{ scale: 1.01, y: -2 }}
+                    whileHover={{ scale: isMobile ? 1.02 : 1.01, y: -2 }}
+                    whileTap={isMobile ? { scale: 0.98 } : {}}
                   >
                     <div className="flex flex-col gap-3 sm:gap-4">
                       <div className="flex-1">
@@ -276,14 +422,20 @@ const Experience = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 text-xs sm:text-sm">
-                          <div className={`flex items-center gap-1 ${subTextColor}`}>
+                          <motion.div 
+                            className={`flex items-center gap-1 ${subTextColor}`}
+                            whileHover={isMobile ? { x: 5 } : {}}
+                          >
                             <FaCalendarAlt />
                             <span>{exp.duration}</span>
-                          </div>
-                          <div className={`flex items-center gap-1 ${subTextColor}`}>
+                          </motion.div>
+                          <motion.div 
+                            className={`flex items-center gap-1 ${subTextColor}`}
+                            whileHover={isMobile ? { x: 5 } : {}}
+                          >
                             <FaMapMarkerAlt />
                             <span>{exp.location}</span>
-                          </div>
+                          </motion.div>
                         </div>
 
                         <p className={`${textColor} mb-4 text-sm sm:text-base leading-relaxed`}>
@@ -316,12 +468,21 @@ const Experience = () => {
                           </h4>
                           <div className="flex flex-wrap gap-1 sm:gap-2">
                             {exp.skills.map((skill, skillIndex) => (
-                              <span
+                              <motion.span
                                 key={skillIndex}
                                 className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${cardBg} border border-[#06B6D4]/20 ${subTextColor}`}
+                                initial={isMobile ? { scale: 0, rotate: -180 } : {}}
+                                animate={isMobile ? { scale: 1, rotate: 0 } : {}}
+                                transition={isMobile ? { 
+                                  delay: index * 0.2 + skillIndex * 0.05 + 0.6,
+                                  type: "spring",
+                                  stiffness: 200
+                                } : {}}
+                                whileHover={isMobile ? { scale: 1.1, y: -2 } : {}}
+                                whileTap={isMobile ? { scale: 0.95 } : {}}
                               >
                                 {skill}
-                              </span>
+                              </motion.span>
                             ))}
                           </div>
                         </div>
@@ -332,27 +493,55 @@ const Experience = () => {
               ))}
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
 
-        {/* Stats Section - Hidden on mobile for better UX */}
+        {/* Stats Section - Enhanced for mobile */}
         <motion.div
-          className="mt-12 sm:mt-20 hidden sm:grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
+          className="mt-12 sm:mt-20 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <div className={`${cardBg} backdrop-blur-md border rounded-xl p-4 sm:p-6 text-center`}>
-            <div className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}>
+          <motion.div 
+            className={`${cardBg} backdrop-blur-md border rounded-xl p-4 sm:p-6 text-center`}
+            whileHover={isMobile ? { 
+              scale: 1.05,
+              rotateY: 5,
+              transition: { duration: 0.3 }
+            } : {}}
+            whileTap={isMobile ? { scale: 0.95 } : {}}
+          >
+            <motion.div 
+              className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}
+              animate={isMobile ? {
+                scale: [1, 1.1, 1],
+                transition: { duration: 2, repeat: Infinity }
+              } : {}}
+            >
               3+
-            </div>
+            </motion.div>
             <p className={`${subTextColor} text-sm sm:text-base`}>Total Experiences</p>
-          </div>
-          <div className={`${cardBg} backdrop-blur-md border rounded-xl p-4 sm:p-6 text-center`}>
-            <div className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}>
+          </motion.div>
+          <motion.div 
+            className={`${cardBg} backdrop-blur-md border rounded-xl p-4 sm:p-6 text-center`}
+            whileHover={isMobile ? { 
+              scale: 1.05,
+              rotateY: -5,
+              transition: { duration: 0.3 }
+            } : {}}
+            whileTap={isMobile ? { scale: 0.95 } : {}}
+          >
+            <motion.div 
+              className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-2`}
+              animate={isMobile ? {
+                scale: [1, 1.1, 1],
+                transition: { duration: 2, repeat: Infinity, delay: 0.5 }
+              } : {}}
+            >
               3+
-            </div>
+            </motion.div>
             <p className={`${subTextColor} text-sm sm:text-base`}>Months Experience</p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
