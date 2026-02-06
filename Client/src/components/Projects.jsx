@@ -96,6 +96,26 @@ const Projects = () => {
       liveLink: "https://github.com/Nandkishorjadhav/QuizMaster",
       sourceLink: "https://github.com/Nandkishorjadhav/QuizMaster",
     },
+    {
+      title: "Grocery Management System",
+      description:
+        "A comprehensive full-stack application for managing grocery inventory, shopping lists, and generating detailed reports.",
+      detailedDescription:
+        "Grocery Management System is a web-based platform that automates grocery store operations with features including inventory management, shopping lists, low stock alerts, and expiring item notifications. The application provides a complete dashboard with real-time metrics, category-based organization, and comprehensive analytics. Built with modern technologies, it features a responsive design with local storage persistence and a RESTful API backend with MongoDB integration for scalable data management.",
+      technologies: [
+        "React 19",
+        "React Router DOM",
+        "Tailwind CSS",
+        "Vite",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+      ],
+      image: "https://via.placeholder.com/600x400?text=Grocery+Management",
+      liveLink: "https://grocery-management-ruby.vercel.app/",
+      sourceLink: "https://github.com/Nandkishorjadhav/Grocery-Management",
+    },
   ];
 
   const openModal = (project) => {
