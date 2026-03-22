@@ -23,23 +23,27 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
     // console.log('All letters have animated!');
   };
 
-  // Modern trendy color theme - Warm colors
+  // Professional color theme - Rose/Amber/Slate
   const bgGradient = isDarkMode
-    ? "from-[#0a0e27] via-[#1a1f3a] to-[#0f1419]"
-    : "from-blue-50 via-indigo-50 to-white";
+    ? "from-slate-950 via-slate-900 to-slate-950"
+    : "white";
 
-  const textColor = isDarkMode ? "text-white" : "text-slate-800";
-  const subTextColor = isDarkMode ? "text-gray-300" : "text-slate-600";
+  const bgClass = isDarkMode
+    ? `bg-gradient-to-br ${bgGradient}`
+    : "bg-white";
 
-  // Premium gradient - Red to Orange to Pink
+  const textColor = isDarkMode ? "text-slate-100" : "text-slate-800";
+  const subTextColor = isDarkMode ? "text-slate-400" : "text-slate-600";
+
+  // Premium gradient - Rose to Amber
   const nameGradient = isDarkMode
-    ? "from-red-400 via-orange-400 to-pink-400"
-    : "from-red-600 via-orange-600 to-pink-600";
+    ? "from-rose-400 via-amber-400 to-rose-300"
+    : "from-rose-700 via-amber-600 to-rose-600";
 
   return (
     <section
       id="home"
-      className={`min-h-screen flex flex-col md:flex-row justify-center items-center bg-gradient-to-br ${bgGradient} ${textColor} px-4 sm:px-6 pt-0 pb-0`}
+      className={`min-h-screen flex flex-col md:flex-row justify-center items-center ${bgClass} ${textColor} px-4 sm:px-6 pt-0 pb-0`}
     >
       {/* Profile Photo on the Left */}
       <motion.div 
@@ -52,14 +56,14 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
           className={`relative group w-72 h-72 md:w-96 md:h-96`}
         >
           {/* Glow Background */}
-          <div className="absolute -inset-4 rounded-full blur-2xl bg-gradient-to-r from-red-500/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute -inset-4 rounded-full blur-2xl bg-gradient-to-r from-rose-500/10 to-amber-500/10 opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
           
           {/* Main Image Container */}
           <div
             className={`relative w-full h-full rounded-full overflow-hidden border-4 ${
               isDarkMode
-                ? "border-red-400/50 shadow-2xl shadow-red-500/30"
-                : "border-red-500/40 shadow-2xl shadow-red-500/20"
+                ? "border-rose-400/30 shadow-2xl shadow-rose-500/15"
+                : "border-rose-500/30 shadow-2xl shadow-rose-400/15"
             } transition-all duration-500`}
           >
             <img
@@ -139,12 +143,12 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={() => handleScrollToSection("about")}
             className={`group relative px-6 py-3 rounded-full font-bold text-white transition-all duration-300 overflow-hidden shadow-lg hover:shadow-xl ${
               isDarkMode
-                ? "bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 hover:shadow-red-500/40"
-                : "bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 hover:shadow-red-500/30"
+                ? "bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 hover:shadow-rose-500/30"
+                : "bg-gradient-to-r from-rose-700 to-amber-600 hover:from-rose-800 hover:to-amber-700 hover:shadow-rose-400/30"
             }`}
           >
             <span className="relative z-10">About Me →</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-rose-700 to-amber-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </motion.button>
 
           <motion.button
@@ -153,8 +157,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={() => handleScrollToSection("projects")}
             className={`group relative px-6 py-3 rounded-full font-bold transition-all duration-300 border-2 shadow-lg hover:shadow-xl ${
               isDarkMode
-                ? "border-orange-500/50 text-orange-300 hover:border-orange-400 hover:bg-orange-500/10"
-                : "border-orange-500/50 text-orange-600 hover:border-orange-600 hover:bg-orange-500/10"
+                ? "border-amber-600/40 text-amber-300 hover:border-amber-400 hover:bg-amber-600/10"
+                : "border-amber-600/40 text-amber-700 hover:border-amber-700 hover:bg-amber-100/50"
             }`}
           >
             <span className="relative z-10">View Projects</span>
@@ -183,8 +187,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={onOpenResume}
             className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-red-400/30 hover:border-red-400/60 text-red-300 hover:shadow-lg hover:shadow-red-500/20"
-                : "bg-gradient-to-br from-red-100 to-orange-100 border border-red-300 hover:border-red-500 text-red-700 hover:shadow-lg hover:shadow-red-500/20"
+                ? "bg-gradient-to-br from-rose-600/15 to-amber-600/15 border border-rose-500/30 hover:border-rose-400/50 text-rose-300 hover:shadow-lg hover:shadow-rose-500/20"
+                : "bg-gradient-to-br from-rose-100/60 to-amber-100/60 border border-rose-400/40 hover:border-rose-500/60 text-rose-700 hover:shadow-lg hover:shadow-rose-400/20"
             }`}
           >
             <FaFileAlt className="text-lg" />
@@ -197,8 +201,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={onOpenExperience}
             className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-pink-500/20 to-red-500/20 border border-pink-400/30 hover:border-pink-400/60 text-pink-300 hover:shadow-lg hover:shadow-pink-500/20"
-                : "bg-gradient-to-br from-pink-100 to-red-100 border border-pink-300 hover:border-pink-500 text-pink-700 hover:shadow-lg hover:shadow-pink-500/20"
+                ? "bg-gradient-to-br from-rose-600/15 to-rose-500/15 border border-rose-500/30 hover:border-rose-400/50 text-rose-300 hover:shadow-lg hover:shadow-rose-500/20"
+                : "bg-gradient-to-br from-rose-100/60 to-rose-100/60 border border-rose-400/40 hover:border-rose-500/60 text-rose-700 hover:shadow-lg hover:shadow-rose-400/20"
             }`}
           >
             <FaBriefcase className="text-lg" />

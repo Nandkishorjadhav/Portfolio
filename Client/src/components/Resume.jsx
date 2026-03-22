@@ -2,6 +2,7 @@ import React from "react";
 import { FaDownload, FaExternalLinkAlt, FaFile } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
+import Resumee from '../assets/Resume.pdf'
 
 const Resume = () => {
   const { isDarkMode } = useTheme();
@@ -13,12 +14,12 @@ const Resume = () => {
       {/* Header */}
       <div className="mb-8">
         <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
-          <FaFile className={isDarkMode ? "text-purple-400" : "text-purple-600"} />
+          <FaFile className={isDarkMode ? "text-cyan-400" : "text-red-600"} />
           Resume & CV
         </h3>
         <p
           className={`${
-            isDarkMode ? "text-gray-400" : "text-gray-600"
+            isDarkMode ? "text-cyan-400" : "text-gray-600"
           } text-lg`}
         >
           Download my detailed resume to learn more about my professional experience
@@ -32,12 +33,12 @@ const Resume = () => {
         transition={{ duration: 0.5 }}
         className={`relative overflow-hidden rounded-2xl p-8 mb-8 ${
           isDarkMode
-            ? "bg-gradient-to-br from-[#1a1f3a]/80 to-[#0f1419]/80 border border-purple-500/30"
-            : "bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-300"
+            ? "bg-gradient-to-br from-[#1a1f3a]/80 to-[#0f1419]/80 border border-red-500/30"
+            : "bg-gradient-to-br from-red-50 to-orange-50 border border-red-300"
         }`}
       >
         {/* Decorative Background */}
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-full blur-3xl" />
 
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Left Content */}
@@ -46,8 +47,8 @@ const Resume = () => {
               <div
                 className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold ${
                   isDarkMode
-                    ? "bg-gradient-to-br from-purple-600 to-pink-600 text-white"
-                    : "bg-gradient-to-br from-purple-500 to-pink-500 text-white"
+                    ? "bg-gradient-to-br from-red-600 to-orange-600 text-white"
+                    : "bg-gradient-to-br from-red-500 to-orange-500 text-white"
                 }`}
               >
                 CV
@@ -56,7 +57,7 @@ const Resume = () => {
                 <h4 className="text-2xl font-bold">Professional Resume</h4>
                 <p
                   className={`${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
+                    isDarkMode ? "text-cyan-300" : "text-gray-600"
                   }`}
                 >
                   Updated March 2025
@@ -66,7 +67,7 @@ const Resume = () => {
 
             <p
               className={`mb-4 leading-relaxed ${
-                isDarkMode ? "text-gray-300" : "text-gray-700"
+                isDarkMode ? "text-cyan-200" : "text-gray-700"
               }`}
             >
               A comprehensive overview of my professional journey, technical skills, project experience,
@@ -77,32 +78,32 @@ const Resume = () => {
             {/* Resume Highlights */}
             <ul
               className={`space-y-2 ${
-                isDarkMode ? "text-gray-300" : "text-gray-700"
+                isDarkMode ? "text-cyan-200" : "text-gray-700"
               }`}
             >
               <li className="flex items-center gap-2">
-                <span className={isDarkMode ? "text-purple-400" : "text-purple-600"}>✓</span>
+                <span className={isDarkMode ? "text-cyan-400" : "text-red-600"}>✓</span>
                 Full-Stack Development expertise with React, Node.js & MongoDB
               </li>
-              <li className="flex items-center gap-2">
-                <span className={isDarkMode ? "text-purple-400" : "text-purple-600"}>✓</span>
+              {/* <li className="flex items-center gap-2">
+                <span className={isDarkMode ? "text-cyan-400" : "text-red-600"}>✓</span>
                 AI/ML projects and competitive programming experience
               </li>
               <li className="flex items-center gap-2">
-                <span className={isDarkMode ? "text-purple-400" : "text-purple-600"}>✓</span>
+                <span className={isDarkMode ? "text-cyan-400" : "text-red-600"}>✓</span>
                 Hackathon recognition and leadership experience
               </li>
               <li className="flex items-center gap-2">
-                <span className={isDarkMode ? "text-purple-400" : "text-purple-600"}>✓</span>
+                <span className={isDarkMode ? "text-cyan-400" : "text-red-600"}>✓</span>
                 Multiple deployed projects with real-world impact
-              </li>
+              </li> */}
             </ul>
           </div>
 
           {/* Right Actions */}
           <div className="flex flex-col gap-4 w-full md:w-auto">
             <a
-              href={resumeUrl}
+              href={Resumee}
               download
               className={`flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 transform hover:scale-105 ${
                 isDarkMode
@@ -115,7 +116,7 @@ const Resume = () => {
             </a>
 
             <a
-              href="./assets/Resume.pdf"
+              href={Resumee}
               
               rel="noopener noreferrer"
               className={`flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 border-2 ${
@@ -139,22 +140,22 @@ const Resume = () => {
         className="grid grid-cols-2 md:grid-cols-4 gap-4"
       >
         {[
-          { label: "Experience", icon: "💼", color: "purple" },
-          { label: "Education", icon: "🎓", color: "indigo" },
-          { label: "Skills", icon: "🛠️", color: "blue" },
-          { label: "Projects", icon: "🚀", color: "pink" },
+          { label: "Experience", icon: "💼", color: "red" },
+          { label: "Education", icon: "🎓", color: "orange" },
+          { label: "Skills", icon: "🛠️", color: "amber" },
+          { label: "Projects", icon: "🚀", color: "rose" },
         ].map((section, idx) => (
           <motion.div
             key={idx}
             whileHover={{ scale: 1.05 }}
             className={`p-4 text-center rounded-xl transition-all duration-300 ${
               isDarkMode
-                ? "bg-[#1a1f3a]/50 border border-white/10 hover:border-purple-500/30"
-                : "bg-white/50 border border-gray-200 hover:border-purple-400"
+                ? "bg-[#1a1f3a]/50 border border-cyan-500/20 hover:border-cyan-400/50"
+                : "bg-white/50 border border-gray-200 hover:border-red-400"
             }`}
           >
             <div className="text-3xl mb-2">{section.icon}</div>
-            <div className={`text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+            <div className={`text-sm font-medium ${isDarkMode ? "text-cyan-300" : "text-gray-700"}`}>
               {section.label}
             </div>
           </motion.div>
@@ -168,7 +169,7 @@ const Resume = () => {
         transition={{ delay: 0.4 }}
         className={`mt-8 p-6 rounded-xl border ${
           isDarkMode
-            ? "bg-[#1a1f3a]/30 border-purple-500/20 text-gray-300"
+            ? "bg-[#1a1f3a]/30 border-cyan-500/20 text-cyan-200"
             : "bg-purple-50/30 border-purple-300 text-gray-700"
         }`}
       >

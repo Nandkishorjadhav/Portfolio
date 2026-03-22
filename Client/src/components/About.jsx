@@ -14,7 +14,7 @@ const About = () => {
     : 'from-blue-50 via-indigo-50 to-white';
 
   const textColor = isDarkMode ? 'text-white' : 'text-slate-800';
-  const subTextColor = isDarkMode ? 'text-gray-300' : 'text-slate-600';
+  const subTextColor = isDarkMode ? 'text-cyan-300' : 'text-slate-600';
   const titleGradient = isDarkMode
     ? 'from-red-400 to-orange-400'
     : 'from-red-600 to-orange-600';
@@ -163,8 +163,8 @@ const About = () => {
                     onClick={() => setCurrentSection(index)}
                     className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
                       currentSection === index 
-                        ? `bg-gradient-to-r ${isDarkMode ? 'from-cyan-400 to-blue-400' : 'from-blue-600 to-indigo-600'}` 
-                        : `${isDarkMode ? 'bg-gray-600' : 'bg-gray-300'} hover:bg-opacity-70`
+                        ? `bg-gradient-to-r ${isDarkMode ? 'from-cyan-400 to-cyan-300' : 'from-blue-600 to-indigo-600'}` 
+                        : `${isDarkMode ? 'bg-cyan-900/30' : 'bg-gray-300'} hover:bg-opacity-70`
                     }`}
                   />
                 ))}
@@ -185,10 +185,10 @@ const About = () => {
                     </div>
                   </div>
                   <div className="text-center sm:text-left">
-                    <div className={`text-sm font-semibold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-1`}>
+                    <div className={`text-sm font-semibold bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-1`}>
                       {sections[currentSection].highlight}
                     </div>
-                    <h2 className={`text-2xl sm:text-3xl font-bold ${textColor}`}>
+                    <h2 className={`text-2xl sm:text-3xl font-bold ${isDarkMode ? 'text-cyan-100' : textColor}`}>
                       {sections[currentSection].title}
                     </h2>
                   </div>

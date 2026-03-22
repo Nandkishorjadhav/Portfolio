@@ -28,7 +28,7 @@ const Projects = () => {
     : "from-red-600 to-orange-600";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
-  const subTextColor = isDarkMode ? "text-gray-400" : "text-slate-600";
+  const subTextColor = isDarkMode ? "text-cyan-300" : "text-slate-600";
   const cardBg = isDarkMode ? "bg-slate-800/80" : "bg-white/80";
   const cardBorder = isDarkMode ? "border-slate-700" : "border-gray-200";
   const buttonBg = isDarkMode

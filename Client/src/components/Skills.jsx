@@ -42,7 +42,7 @@ const Skills = () => {
     : "bg-white/80 border-red-500/20 shadow-red-500/10";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
-  const subTextColor = isDarkMode ? "text-gray-400" : "text-slate-600";
+  const subTextColor = isDarkMode ? "text-cyan-300" : "text-slate-600";
   const skillItemBg = isDarkMode
     ? "bg-gray-700/30 border-red-500/10 hover:from-red-600/10 hover:to-orange-600/10"
     : "bg-gray-100/50 border-red-500/10 hover:from-red-600/10 hover:to-orange-600/10";
@@ -132,7 +132,7 @@ const Skills = () => {
                     className={`flex items-center gap-3 p-2 ${skillItemBg} rounded-lg hover:bg-gradient-to-r transition-colors border`}
                   >
                     <div className={`text-xl ${skill.color}`}>{skill.icon}</div>
-                    <span className={isDarkMode ? "text-gray-300" : "text-slate-700"}>
+                    <span className={isDarkMode ? "text-cyan-200" : "text-slate-700"}>
                       {skill.name}
                     </span>
                   </div>

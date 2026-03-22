@@ -235,10 +235,10 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                   activeSection === item.id
                     ? isDarkMode
                       ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white'
-                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
+                      : 'bg-gradient-to-r from-red-600 to-orange-600 text-white'
                     : isDarkMode
-                      ? 'bg-slate-700 text-white hover:bg-slate-600'
-                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                      ? 'bg-cyan-600/30 text-cyan-300 hover:bg-cyan-600/50'
+                      : 'bg-red-500/30 text-red-700 hover:bg-red-500/50'
                 }`}
               >
                 {item.icon}

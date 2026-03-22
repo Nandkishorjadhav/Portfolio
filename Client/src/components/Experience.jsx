@@ -30,7 +30,7 @@ const Experience = () => {
       : "from-blue-50 via-indigo-50 to-white";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
-  const subTextColor = isDarkMode ? "text-emerald-400" : "text-emerald-600";
+  const subTextColor = isDarkMode ? "text-cyan-400" : "text-emerald-600";
   const cardBg = isDarkMode 
     ? "bg-[#1a1f3a]/80 border-emerald-500/30" 
     : "bg-white/90 border-emerald-300/50";

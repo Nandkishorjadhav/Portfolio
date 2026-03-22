@@ -76,7 +76,7 @@ const Contact = () => {
     ? "bg-[#1a1f3a]/50 border-red-500/20 shadow-red-500/10"
     : "bg-white/80 border-red-500/20 shadow-red-500/10";
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
-  const subTextColor = isDarkMode ? "text-gray-300" : "text-slate-600";
+  const subTextColor = isDarkMode ? "text-cyan-300" : "text-slate-600";
   const titleGradient = isDarkMode
     ? "from-red-400 to-orange-400"
     : "from-red-600 to-orange-600";
