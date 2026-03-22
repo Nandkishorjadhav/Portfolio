@@ -1,10 +1,11 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaTrophy, FaFileAlt, FaBriefcase } from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 import profilePic from "../assets/myPhoto.webp";
 import SplitText from "./SplitText";
+import { motion } from "framer-motion";
 
-const Home = () => {
+const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
   const { isDarkMode } = useTheme();
 
   const handleScrollToSection = (sectionId) => {
@@ -22,18 +23,18 @@ const Home = () => {
     // console.log('All letters have animated!');
   };
 
-  // Background gradient with #393E46 + #00ADB5 for dark mode
+  // Modern trendy color theme
   const bgGradient = isDarkMode
-    ? "from-[#393E46] via-[#222831] to-[#00ADB5]"
-    : "from-blue-50 via-indigo-50 to-blue-50";
+    ? "from-[#0a0e27] via-[#1a1f3a] to-[#0f1419]"
+    : "from-blue-50 via-indigo-50 to-white";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
   const subTextColor = isDarkMode ? "text-gray-300" : "text-slate-600";
 
-  // Name gradient styling
+  // Premium gradient - Cyan to Purple to Pink
   const nameGradient = isDarkMode
-    ? "from-[#00ADB5] to-[#393E46]"
-    : "from-blue-600 to-indigo-600";
+    ? "from-cyan-400 via-purple-400 to-pink-400"
+    : "from-blue-600 via-purple-600 to-pink-600";
 
   return (
     <section
@@ -41,21 +42,34 @@ const Home = () => {
       className={`min-h-screen flex flex-col md:flex-row justify-center items-center bg-gradient-to-br ${bgGradient} ${textColor} px-4 sm:px-6 pt-0 pb-0`}
     >
       {/* Profile Photo on the Left */}
-      <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, type: "spring" }}
+        className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0"
+      >
         <div
-          className={`relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-8 ${
-            isDarkMode
-              ? "border-[#00ADB5]/50 hover:border-[#00ADB5]"
-              : "border-blue-500/40 hover:border-blue-600"
-          } shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,173,181,0.6)]`}
+          className={`relative group w-72 h-72 md:w-96 md:h-96`}
         >
-          <img
-            src={profilePic}
-            alt="Profile"
-            className="w-full h-full object-cover"
-          />
+          {/* Glow Background */}
+          <div className="absolute -inset-4 rounded-full blur-2xl bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Main Image Container */}
+          <div
+            className={`relative w-full h-full rounded-full overflow-hidden border-4 ${
+              isDarkMode
+                ? "border-cyan-400/50 shadow-2xl shadow-cyan-500/30"
+                : "border-blue-500/40 shadow-2xl shadow-blue-500/20"
+            } transition-all duration-500`}
+          >
+            <img
+              src={profilePic}
+              alt="Profile"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Details on the Right */}
       <div className="text-center max-w-5xl w-full md:w-1/2 md:text-left md:pl-6">
@@ -117,62 +131,116 @@ const Home = () => {
           impactful projects.
         </p>
 
-        {/* Buttons */}
-        <div className="flex justify-center md:justify-start gap-4 mb-10">
-          <button
+        {/* Primary Buttons */}
+        <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => handleScrollToSection("about")}
-            className={`px-6 py-3 bg-gradient-to-r ${
+            className={`group relative px-6 py-3 rounded-full font-bold text-white transition-all duration-300 overflow-hidden shadow-lg hover:shadow-xl ${
               isDarkMode
-                ? "from-[#00ADB5] to-[#393E46] hover:from-[#00ADB5]/80 hover:to-[#222831] shadow-[#00ADB5]/40"
-                : "from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-500/25"
-            } text-white rounded-full text-lg shadow-lg transition duration-300 hover:transform hover:scale-105`}
+                ? "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 hover:shadow-emerald-500/40"
+                : "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 hover:shadow-emerald-500/30"
+            }`}
           >
-            About Me
-          </button>
-          <button
+            <span className="relative z-10">About Me →</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => handleScrollToSection("projects")}
-            className={`px-6 py-3 bg-gradient-to-r ${
+            className={`group relative px-6 py-3 rounded-full font-bold transition-all duration-300 border-2 shadow-lg hover:shadow-xl ${
               isDarkMode
-                ? "from-gray-700 to-[#393E46] hover:from-[#00ADB5]/30 hover:to-[#222831]/80 border-[#00ADB5]/30"
-                : "from-gray-200 to-gray-300 hover:from-blue-600/20 hover:to-indigo-600/20 border-blue-500/20 text-slate-800"
-            } rounded-full text-lg shadow-lg transition duration-300 hover:transform hover:scale-105 border`}
+                ? "border-indigo-500/50 text-indigo-300 hover:border-indigo-400 hover:bg-indigo-500/10"
+                : "border-indigo-500/50 text-indigo-600 hover:border-indigo-600 hover:bg-indigo-500/10"
+            }`}
           >
-            View Projects
-          </button>
+            <span className="relative z-10">View Projects</span>
+          </motion.button>
+        </div>
+
+        {/* Feature Buttons */}
+        <div className="grid grid-cols-3 gap-2 mb-10 max-w-md">
+          <motion.button
+            whileHover={{ scale: 1.05, y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenHackathons}
+            className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
+              isDarkMode
+                ? "bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-400/30 hover:border-yellow-400/60 text-yellow-300 hover:shadow-lg hover:shadow-yellow-500/20"
+                : "bg-gradient-to-br from-yellow-100 to-orange-100 border border-yellow-300 hover:border-yellow-500 text-yellow-700 hover:shadow-lg hover:shadow-yellow-500/20"
+            }`}
+          >
+            <FaTrophy className="text-lg" />
+            <span className="text-xs font-bold">Hackathons</span>
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.05, y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenResume}
+            className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
+              isDarkMode
+                ? "bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-400/30 hover:border-purple-400/60 text-purple-300 hover:shadow-lg hover:shadow-purple-500/20"
+                : "bg-gradient-to-br from-purple-100 to-pink-100 border border-purple-300 hover:border-purple-500 text-purple-700 hover:shadow-lg hover:shadow-purple-500/20"
+            }`}
+          >
+            <FaFileAlt className="text-lg" />
+            <span className="text-xs font-bold">Resume</span>
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.05, y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenExperience}
+            className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
+              isDarkMode
+                ? "bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-300 hover:shadow-lg hover:shadow-cyan-500/20"
+                : "bg-gradient-to-br from-cyan-100 to-blue-100 border border-cyan-300 hover:border-cyan-500 text-cyan-700 hover:shadow-lg hover:shadow-cyan-500/20"
+            }`}
+          >
+            <FaBriefcase className="text-lg" />
+            <span className="text-xs font-bold">Experience</span>
+          </motion.button>
         </div>
 
         {/* Social Icons */}
-        <div className="flex justify-center md:justify-start gap-6 text-3xl mb-5">
-          <a
+        <div className="flex justify-center md:justify-start gap-6 text-3xl">
+          <motion.a
+            whileHover={{ scale: 1.2, rotate: 5 }}
             href="https://github.com/Nandkishorjadhav"
             target="_blank"
             rel="noopener noreferrer"
-            className={`${
-              isDarkMode ? "hover:text-[#00ADB5]" : "hover:text-blue-600"
-            } transition-all duration-300 hover:transform hover:scale-110`}
+            className={`transition-all duration-300 ${
+              isDarkMode ? "text-cyan-400 hover:text-pink-400" : "text-blue-600 hover:text-pink-600"
+            }`}
           >
             <FaGithub />
-          </a>
-          <a
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.2, rotate: 5 }}
             href="https://www.linkedin.com/in/nandkishor-jadhav-80044b300"
             target="_blank"
             rel="noopener noreferrer"
-            className={`${
-              isDarkMode ? "hover:text-[#00ADB5]" : "hover:text-indigo-600"
-            } transition-all duration-300 hover:transform hover:scale-110`}
+            className={`transition-all duration-300 ${
+              isDarkMode ? "text-cyan-400 hover:text-pink-400" : "text-blue-600 hover:text-pink-600"
+            }`}
           >
             <FaLinkedin />
-          </a>
-          <a
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.2, rotate: 5 }}
             href="https://twitter.com/your-username"
             target="_blank"
             rel="noopener noreferrer"
-            className={`${
-              isDarkMode ? "hover:text-[#00ADB5]" : "hover:text-blue-600"
-            } transition-all duration-300 hover:transform hover:scale-110`}
+            className={`transition-all duration-300 ${
+              isDarkMode ? "text-cyan-400 hover:text-pink-400" : "text-blue-600 hover:text-pink-600"
+            }`}
           >
             <FaTwitter />
-          </a>
+          </motion.a>
         </div>
       </div>
     </section>

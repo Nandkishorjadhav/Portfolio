@@ -72,13 +72,13 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   };
 
   const navBg = isDarkMode 
-    ? 'bg-slate-900/95 backdrop-blur-md shadow-2xl border-b border-cyan-500/20'
-    : 'bg-white/95 backdrop-blur-md shadow-2xl border-b border-blue-500/20';
+    ? 'bg-[#0f1419]/80 backdrop-blur-2xl shadow-2xl border-b border-cyan-500/20'
+    : 'bg-white/80 backdrop-blur-2xl shadow-2xl border-b border-blue-500/20';
 
   const textColor = isDarkMode ? 'text-white' : 'text-slate-800';
   const logoGradient = isDarkMode 
-    ? 'from-cyan-400 to-blue-400' 
-    : 'from-blue-600 to-indigo-600';
+    ? 'from-cyan-400 to-purple-500' 
+    : 'from-blue-600 to-purple-600';
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -143,8 +143,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 {/* Gradient Definition */}
                 <defs>
                   <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: isDarkMode ? '#22d3ee' : '#2563eb' }} />
-                    <stop offset="100%" style={{ stopColor: isDarkMode ? '#3b82f6' : '#4f46e5' }} />
+                    <stop offset="0%" style={{ stopColor: isDarkMode ? '#00d9ff' : '#2563eb' }} />
+                    <stop offset="50%" style={{ stopColor: isDarkMode ? '#a855f7' : '#7c3aed' }} />
+                    <stop offset="100%" style={{ stopColor: isDarkMode ? '#ec4899' : '#db2777' }} />
                   </linearGradient>
                 </defs>
               </svg>
@@ -167,11 +168,11 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                   activeSection === item.id
                     ? isDarkMode 
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
-                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25'
+                      ? 'bg-gradient-to-r from-cyan-600 to-purple-600 text-white shadow-lg shadow-cyan-500/25'
+                      : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25'
                     : isDarkMode
-                      ? 'text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-cyan-600/20 hover:to-blue-600/20'
-                      : 'text-gray-600 hover:text-slate-800 hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-indigo-600/20'
+                      ? 'text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-cyan-600/20 hover:to-purple-600/20'
+                      : 'text-gray-600 hover:text-slate-800 hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-purple-600/20'
                 }`}
               >
                 <span className="hidden lg:inline">{item.icon}</span>

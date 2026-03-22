@@ -20,12 +20,12 @@ const Projects = () => {
   }, []);
 
   const bgGradient = isDarkMode
-    ? "from-slate-900 via-cyan-900 to-slate-900"
-    : "from-blue-50 via-indigo-50 to-blue-50";
+    ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
+    : "from-blue-50 via-indigo-50 to-white";
 
   const titleGradient = isDarkMode
-    ? "from-cyan-400 to-blue-400"
-    : "from-blue-600 to-indigo-600";
+    ? "from-cyan-400 to-purple-400"
+    : "from-blue-600 to-purple-600";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
   const subTextColor = isDarkMode ? "text-gray-400" : "text-slate-600";
@@ -198,7 +198,7 @@ const Projects = () => {
                 <div className="mt-auto text-center">
                   <button
                     onClick={() => openModal(project)}
-                    className={`inline-block px-4 py-2 rounded-lg font-medium text-white bg-gradient-to-r ${titleGradient} hover:opacity-90 transition-opacity duration-300 cursor-pointer text-sm`}
+                    className={`inline-block px-4 py-2 rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700' : 'from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600'} transition-all duration-300 cursor-pointer text-sm transform hover:scale-105 shadow-lg hover:shadow-xl`}
                   >
                     View More
                   </button>
@@ -286,7 +286,7 @@ const Projects = () => {
                   href={selectedProject.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-1 text-center px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${titleGradient} hover:opacity-90 transition-opacity duration-300`}
+                  className={`flex-1 text-center px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700' : 'from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600'} transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                 >
                   Live Demo
                 </a>
@@ -296,9 +296,9 @@ const Projects = () => {
                   rel="noopener noreferrer"
                   className={`flex-1 text-center px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${
                     isDarkMode
-                      ? "from-gray-600 to-gray-700"
-                      : "from-gray-500 to-gray-600"
-                  } hover:opacity-90 transition-opacity duration-300`}
+                      ? "from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+                      : "from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
+                  } transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                 >
                   Source Code
                 </a>

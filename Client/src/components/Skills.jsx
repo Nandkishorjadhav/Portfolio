@@ -34,8 +34,8 @@ const Skills = () => {
   const { isDarkMode } = useTheme();
 
   const bgGradient = isDarkMode
-    ? "from-slate-900 via-cyan-900 to-slate-900"
-    : "from-blue-50 via-indigo-50 to-blue-50";
+    ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
+    : "from-blue-50 via-indigo-50 to-white";
 
   const cardBg = isDarkMode
     ? "bg-gray-800/50 border-cyan-500/20 shadow-cyan-500/10"
@@ -48,8 +48,8 @@ const Skills = () => {
     : "bg-gray-100/50 border-blue-500/10 hover:from-blue-600/10 hover:to-indigo-600/10";
 
   const titleGradient = isDarkMode
-    ? "from-cyan-400 to-blue-400"
-    : "from-blue-600 to-indigo-600";
+    ? "from-cyan-400 to-purple-400"
+    : "from-blue-600 to-purple-600";
 
   const skillCategories = [
     {

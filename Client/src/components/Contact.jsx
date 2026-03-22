@@ -58,7 +58,7 @@ const Contact = () => {
       icon: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />,
       value: "nandupatiljadhav660@gmail.com",
       link: "mailto:nandupatiljadhav660@gmail.com",
-      gradientClass: isDarkMode ? "from-cyan-400 to-blue-400" : "from-blue-600 to-indigo-600",
+      gradientClass: isDarkMode ? "from-cyan-400 to-purple-400" : "from-blue-600 to-purple-600",
     },
     // {
     //   icon: <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />,
@@ -70,16 +70,16 @@ const Contact = () => {
 
   // Theme-based styles
   const bgGradient = isDarkMode
-    ? "from-slate-900 via-cyan-900 to-slate-900"
-    : "from-blue-50 via-indigo-50 to-blue-50";
+    ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
+    : "from-blue-50 via-indigo-50 to-white";
   const cardBg = isDarkMode
-    ? "bg-gray-800/50 border-cyan-500/20 shadow-cyan-500/10"
+    ? "bg-[#1a1f3a]/50 border-cyan-500/20 shadow-cyan-500/10"
     : "bg-white/80 border-blue-500/20 shadow-blue-500/10";
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
   const subTextColor = isDarkMode ? "text-gray-300" : "text-slate-600";
   const titleGradient = isDarkMode
-    ? "from-cyan-400 to-blue-400"
-    : "from-blue-600 to-indigo-600";
+    ? "from-cyan-400 to-purple-400"
+    : "from-blue-600 to-purple-600";
 
   return (
     <section

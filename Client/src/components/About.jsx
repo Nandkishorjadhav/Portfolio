@@ -10,14 +10,14 @@ const About = () => {
   const [currentSection, setCurrentSection] = useState(0);
 
   const bgGradient = isDarkMode
-    ? 'from-slate-900 via-cyan-900 to-slate-900'
-    : 'from-blue-50 via-indigo-50 to-blue-50';
+    ? 'from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]'
+    : 'from-blue-50 via-indigo-50 to-white';
 
   const textColor = isDarkMode ? 'text-white' : 'text-slate-800';
   const subTextColor = isDarkMode ? 'text-gray-300' : 'text-slate-600';
   const titleGradient = isDarkMode
-    ? 'from-cyan-400 to-blue-400'
-    : 'from-blue-600 to-indigo-600';
+    ? 'from-cyan-400 to-purple-400'
+    : 'from-blue-600 to-purple-600';
 
   const sections = [
     {
@@ -64,7 +64,7 @@ const About = () => {
     
     const torusGeometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
     const torusMaterial = new THREE.MeshBasicMaterial({
-      color: isDarkMode ? 0x00ffff : 0x0066ff,
+      color: isDarkMode ? 0x00d9ff : 0x0066ff,
       wireframe: true,
       transparent: true,
       opacity: 0.7
@@ -74,7 +74,7 @@ const About = () => {
 
     const icosaGeometry = new THREE.IcosahedronGeometry(0.8, 0);
     const icosaMaterial = new THREE.MeshBasicMaterial({
-      color: isDarkMode ? 0x22d3ee : 0x3b82f6,
+      color: isDarkMode ? 0xa855f7 : 0x7c3aed,
       wireframe: true,
       transparent: true,
       opacity: 0.6
@@ -85,7 +85,7 @@ const About = () => {
 
     const octaGeometry = new THREE.OctahedronGeometry(0.6);
     const octaMaterial = new THREE.MeshBasicMaterial({
-      color: isDarkMode ? 0x06b6d4 : 0x6366f1,
+      color: isDarkMode ? 0xec4899 : 0xdb2777,
       wireframe: true,
       transparent: true,
       opacity: 0.5
