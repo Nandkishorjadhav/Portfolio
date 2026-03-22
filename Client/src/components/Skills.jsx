@@ -38,29 +38,29 @@ const Skills = () => {
     : "from-blue-50 via-indigo-50 to-white";
 
   const cardBg = isDarkMode
-    ? "bg-gray-800/50 border-cyan-500/20 shadow-cyan-500/10"
-    : "bg-white/80 border-blue-500/20 shadow-blue-500/10";
+    ? "bg-gray-800/50 border-red-500/20 shadow-red-500/10"
+    : "bg-white/80 border-red-500/20 shadow-red-500/10";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
   const subTextColor = isDarkMode ? "text-gray-400" : "text-slate-600";
   const skillItemBg = isDarkMode
-    ? "bg-gray-700/30 border-cyan-500/10 hover:from-cyan-600/10 hover:to-blue-600/10"
-    : "bg-gray-100/50 border-blue-500/10 hover:from-blue-600/10 hover:to-indigo-600/10";
+    ? "bg-gray-700/30 border-red-500/10 hover:from-red-600/10 hover:to-orange-600/10"
+    : "bg-gray-100/50 border-red-500/10 hover:from-red-600/10 hover:to-orange-600/10";
 
   const titleGradient = isDarkMode
-    ? "from-cyan-400 to-purple-400"
-    : "from-blue-600 to-purple-600";
+    ? "from-red-400 to-orange-400"
+    : "from-red-600 to-orange-600";
 
   const skillCategories = [
     {
       title: "Frontend",
       icon: <HiOutlineDesktopComputer />,
       skills: [
-        { name: "React", icon: <FaReact />, color: "text-cyan-400" },
+        { name: "React", icon: <FaReact />, color: "text-red-400" },
         { name: "JavaScript", icon: <FaJs />, color: "text-yellow-400" },
         { name: "HTML5", icon: <SiHtml5 />, color: "text-orange-500" },
         { name: "CSS3", icon: <SiCss3 />, color: "text-blue-500" },
-        { name: "Tailwind", icon: <SiTailwindcss />, color: "text-cyan-500" },
+        { name: "Tailwind", icon: <SiTailwindcss />, color: "text-orange-500" },
       ],
     },
     {
@@ -87,7 +87,7 @@ const Skills = () => {
       skills: [
         { name: "Git", icon: <SiGit />, color: "text-orange-500" },
         // { name: "Docker", icon: <SiDocker />, color: "text-blue-500" },
-        { name: "VS Code", icon: <HiOutlineTerminal />, color: "text-cyan-400" },
+        { name: "VS Code", icon: <HiOutlineTerminal />, color: "text-red-400" },
         { name: "AI/ML", icon: <FaBrain />, color: "text-pink-500" },
       ],
     },

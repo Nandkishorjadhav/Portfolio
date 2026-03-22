@@ -23,7 +23,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
     // console.log('All letters have animated!');
   };
 
-  // Modern trendy color theme
+  // Modern trendy color theme - Warm colors
   const bgGradient = isDarkMode
     ? "from-[#0a0e27] via-[#1a1f3a] to-[#0f1419]"
     : "from-blue-50 via-indigo-50 to-white";
@@ -31,10 +31,10 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
   const subTextColor = isDarkMode ? "text-gray-300" : "text-slate-600";
 
-  // Premium gradient - Cyan to Purple to Pink
+  // Premium gradient - Red to Orange to Pink
   const nameGradient = isDarkMode
-    ? "from-cyan-400 via-purple-400 to-pink-400"
-    : "from-blue-600 via-purple-600 to-pink-600";
+    ? "from-red-400 via-orange-400 to-pink-400"
+    : "from-red-600 via-orange-600 to-pink-600";
 
   return (
     <section
@@ -52,14 +52,14 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
           className={`relative group w-72 h-72 md:w-96 md:h-96`}
         >
           {/* Glow Background */}
-          <div className="absolute -inset-4 rounded-full blur-2xl bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute -inset-4 rounded-full blur-2xl bg-gradient-to-r from-red-500/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
           {/* Main Image Container */}
           <div
             className={`relative w-full h-full rounded-full overflow-hidden border-4 ${
               isDarkMode
-                ? "border-cyan-400/50 shadow-2xl shadow-cyan-500/30"
-                : "border-blue-500/40 shadow-2xl shadow-blue-500/20"
+                ? "border-red-400/50 shadow-2xl shadow-red-500/30"
+                : "border-red-500/40 shadow-2xl shadow-red-500/20"
             } transition-all duration-500`}
           >
             <img
@@ -139,12 +139,12 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={() => handleScrollToSection("about")}
             className={`group relative px-6 py-3 rounded-full font-bold text-white transition-all duration-300 overflow-hidden shadow-lg hover:shadow-xl ${
               isDarkMode
-                ? "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 hover:shadow-emerald-500/40"
-                : "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 hover:shadow-emerald-500/30"
+                ? "bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 hover:shadow-red-500/40"
+                : "bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 hover:shadow-red-500/30"
             }`}
           >
             <span className="relative z-10">About Me →</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </motion.button>
 
           <motion.button
@@ -153,8 +153,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={() => handleScrollToSection("projects")}
             className={`group relative px-6 py-3 rounded-full font-bold transition-all duration-300 border-2 shadow-lg hover:shadow-xl ${
               isDarkMode
-                ? "border-indigo-500/50 text-indigo-300 hover:border-indigo-400 hover:bg-indigo-500/10"
-                : "border-indigo-500/50 text-indigo-600 hover:border-indigo-600 hover:bg-indigo-500/10"
+                ? "border-orange-500/50 text-orange-300 hover:border-orange-400 hover:bg-orange-500/10"
+                : "border-orange-500/50 text-orange-600 hover:border-orange-600 hover:bg-orange-500/10"
             }`}
           >
             <span className="relative z-10">View Projects</span>
@@ -183,8 +183,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={onOpenResume}
             className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-400/30 hover:border-purple-400/60 text-purple-300 hover:shadow-lg hover:shadow-purple-500/20"
-                : "bg-gradient-to-br from-purple-100 to-pink-100 border border-purple-300 hover:border-purple-500 text-purple-700 hover:shadow-lg hover:shadow-purple-500/20"
+                ? "bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-red-400/30 hover:border-red-400/60 text-red-300 hover:shadow-lg hover:shadow-red-500/20"
+                : "bg-gradient-to-br from-red-100 to-orange-100 border border-red-300 hover:border-red-500 text-red-700 hover:shadow-lg hover:shadow-red-500/20"
             }`}
           >
             <FaFileAlt className="text-lg" />
@@ -197,8 +197,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={onOpenExperience}
             className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-300 hover:shadow-lg hover:shadow-cyan-500/20"
-                : "bg-gradient-to-br from-cyan-100 to-blue-100 border border-cyan-300 hover:border-cyan-500 text-cyan-700 hover:shadow-lg hover:shadow-cyan-500/20"
+                ? "bg-gradient-to-br from-pink-500/20 to-red-500/20 border border-pink-400/30 hover:border-pink-400/60 text-pink-300 hover:shadow-lg hover:shadow-pink-500/20"
+                : "bg-gradient-to-br from-pink-100 to-red-100 border border-pink-300 hover:border-pink-500 text-pink-700 hover:shadow-lg hover:shadow-pink-500/20"
             }`}
           >
             <FaBriefcase className="text-lg" />
@@ -214,7 +214,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             target="_blank"
             rel="noopener noreferrer"
             className={`transition-all duration-300 ${
-              isDarkMode ? "text-cyan-400 hover:text-pink-400" : "text-blue-600 hover:text-pink-600"
+              isDarkMode ? "text-red-400 hover:text-orange-400" : "text-red-600 hover:text-orange-600"
             }`}
           >
             <FaGithub />
@@ -225,7 +225,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             target="_blank"
             rel="noopener noreferrer"
             className={`transition-all duration-300 ${
-              isDarkMode ? "text-cyan-400 hover:text-pink-400" : "text-blue-600 hover:text-pink-600"
+              isDarkMode ? "text-red-400 hover:text-orange-400" : "text-red-600 hover:text-orange-600"
             }`}
           >
             <FaLinkedin />
@@ -236,7 +236,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             target="_blank"
             rel="noopener noreferrer"
             className={`transition-all duration-300 ${
-              isDarkMode ? "text-cyan-400 hover:text-pink-400" : "text-blue-600 hover:text-pink-600"
+              isDarkMode ? "text-red-400 hover:text-orange-400" : "text-red-600 hover:text-orange-600"
             }`}
           >
             <FaTwitter />

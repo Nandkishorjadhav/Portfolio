@@ -35,8 +35,8 @@ const Experience = () => {
     ? "bg-[#1a1f3a]/80 border-emerald-500/30" 
     : "bg-white/90 border-emerald-300/50";
   const titleGradient = isDarkMode
-    ? "from-emerald-400 to-teal-400"
-    : "from-emerald-600 to-teal-600";
+    ? "from-red-400 to-orange-400"
+    : "from-red-600 to-orange-600";
 
   const categories = [
     {
@@ -333,7 +333,7 @@ const Experience = () => {
         >
           {/* Animated Timeline Line - Responsive positioning */}
           <motion.div
-            className="absolute left-4 sm:left-8 top-0 w-0.5 sm:w-1 bg-gradient-to-b from-emerald-500 to-teal-500 origin-top"
+            className="absolute left-4 sm:left-8 top-0 w-0.5 sm:w-1 bg-gradient-to-b from-red-500 to-orange-500 origin-top"
             style={{ height: "100%" }}
             variants={timelineVariants}
             initial="hidden"

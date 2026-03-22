@@ -115,8 +115,8 @@ const Resume = () => {
             </a>
 
             <a
-              href={resumeUrl}
-              target="_blank"
+              href="./assets/Resume.pdf"
+              
               rel="noopener noreferrer"
               className={`flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 border-2 ${
                 isDarkMode

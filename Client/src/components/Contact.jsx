@@ -49,7 +49,7 @@ const Contact = () => {
       icon: <Twitter className="w-5 h-5 sm:w-6 sm:h-6" />,
       link: "https://twitter.com/your-username",
       label: "Twitter",
-      hoverClass: isDarkMode ? "hover:text-cyan-500 hover:bg-cyan-50" : "hover:text-cyan-600 hover:bg-cyan-100",
+      hoverClass: isDarkMode ? "hover:text-red-500 hover:bg-red-50" : "hover:text-red-600 hover:bg-red-100",
     },
   ];
 
@@ -58,7 +58,7 @@ const Contact = () => {
       icon: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />,
       value: "nandupatiljadhav660@gmail.com",
       link: "mailto:nandupatiljadhav660@gmail.com",
-      gradientClass: isDarkMode ? "from-cyan-400 to-purple-400" : "from-blue-600 to-purple-600",
+      gradientClass: isDarkMode ? "from-red-400 to-orange-400" : "from-red-600 to-orange-600",
     },
     // {
     //   icon: <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />,
@@ -73,13 +73,13 @@ const Contact = () => {
     ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
     : "from-blue-50 via-indigo-50 to-white";
   const cardBg = isDarkMode
-    ? "bg-[#1a1f3a]/50 border-cyan-500/20 shadow-cyan-500/10"
-    : "bg-white/80 border-blue-500/20 shadow-blue-500/10";
+    ? "bg-[#1a1f3a]/50 border-red-500/20 shadow-red-500/10"
+    : "bg-white/80 border-red-500/20 shadow-red-500/10";
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
   const subTextColor = isDarkMode ? "text-gray-300" : "text-slate-600";
   const titleGradient = isDarkMode
-    ? "from-cyan-400 to-purple-400"
-    : "from-blue-600 to-purple-600";
+    ? "from-red-400 to-orange-400"
+    : "from-red-600 to-orange-600";
 
   return (
     <section
@@ -88,9 +88,9 @@ const Contact = () => {
     >
       {/* Optimized background animations */}
       <div className="absolute inset-0 overflow-hidden hidden sm:block">
-        <div className="absolute -top-20 -right-20 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-gradient-to-r from-cyan-300/20 to-blue-300/20 blur-2xl animate-pulse"></div>
-        <div className="absolute -bottom-20 -left-20 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-gradient-to-r from-blue-300/20 to-indigo-300/20 blur-2xl animate-pulse" style={{ animationDelay: "1s" }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-gradient-to-r from-indigo-200/10 to-cyan-200/10 blur-2xl animate-spin" style={{ animationDuration: "20s" }}></div>
+        <div className="absolute -top-20 -right-20 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-gradient-to-r from-red-300/20 to-orange-300/20 blur-2xl animate-pulse"></div>
+        <div className="absolute -bottom-20 -left-20 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-gradient-to-r from-orange-300/20 to-red-300/20 blur-2xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-gradient-to-r from-pink-200/10 to-red-200/10 blur-2xl animate-spin" style={{ animationDuration: "20s" }}></div>
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
