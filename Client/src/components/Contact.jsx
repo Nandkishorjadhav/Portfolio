@@ -174,7 +174,7 @@ const Contact = () => {
                 </div>
                 <button
                   onClick={handleSubmit}
-                  className={`w-full py-3 sm:py-4 px-6 sm:px-8 bg-gradient-to-r ${isDarkMode ? "from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-cyan-500/25" : "from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-500/25"} text-white rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:translate-y-0 group`}
+                  className={`w-full py-3 sm:py-4 px-6 sm:px-8 bg-gradient-to-r ${isDarkMode ? "from-cyan-500 via-blue-500 to-indigo-500 hover:from-cyan-600 hover:via-blue-600 hover:to-indigo-600 shadow-cyan-600/40" : "from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-700 hover:via-blue-700 hover:to-indigo-700 shadow-cyan-600/40"} text-white rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 group`}
                 >
                   <span className="flex items-center justify-center gap-2">
                     Send Message

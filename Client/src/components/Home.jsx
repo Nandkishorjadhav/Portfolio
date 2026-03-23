@@ -141,24 +141,26 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleScrollToSection("about")}
-            className={`group relative px-6 py-3 rounded-full font-bold text-white transition-all duration-300 overflow-hidden shadow-lg hover:shadow-xl ${
+            className={`group relative px-8 py-3 rounded-full font-bold text-white transition-all duration-300 overflow-hidden shadow-xl hover:shadow-2xl ${
               isDarkMode
-                ? "bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 hover:shadow-rose-500/30"
-                : "bg-gradient-to-r from-rose-700 to-amber-600 hover:from-rose-800 hover:to-amber-700 hover:shadow-rose-400/30"
+                ? "bg-gradient-to-r from-rose-500 via-red-500 to-orange-500 hover:from-rose-600 hover:via-red-600 hover:to-orange-600 hover:shadow-rose-600/40"
+                : "bg-gradient-to-r from-rose-600 via-red-600 to-orange-600 hover:from-rose-700 hover:via-red-700 hover:to-orange-700 hover:shadow-rose-500/40"
             }`}
           >
             <span className="relative z-10">About Me →</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-rose-700 to-amber-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 ${
+              isDarkMode ? "bg-white" : "bg-white"
+            }`} />
           </motion.button>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleScrollToSection("projects")}
-            className={`group relative px-6 py-3 rounded-full font-bold transition-all duration-300 border-2 shadow-lg hover:shadow-xl ${
+            className={`group relative px-8 py-3 rounded-full font-bold transition-all duration-300 border-2 shadow-xl hover:shadow-2xl ${
               isDarkMode
-                ? "border-amber-600/40 text-amber-300 hover:border-amber-400 hover:bg-amber-600/10"
-                : "border-amber-600/40 text-amber-700 hover:border-amber-700 hover:bg-amber-100/50"
+                ? "border-amber-500 text-amber-300 hover:border-amber-400 hover:bg-gradient-to-r hover:from-amber-600/20 hover:to-orange-600/20"
+                : "border-orange-600 text-orange-700 hover:border-orange-700 hover:bg-gradient-to-r hover:from-orange-100 hover:to-amber-100"
             }`}
           >
             <span className="relative z-10">View Projects</span>
@@ -173,8 +175,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={onOpenHackathons}
             className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-400/30 hover:border-yellow-400/60 text-yellow-300 hover:shadow-lg hover:shadow-yellow-500/20"
-                : "bg-gradient-to-br from-yellow-100 to-orange-100 border border-yellow-300 hover:border-yellow-500 text-yellow-700 hover:shadow-lg hover:shadow-yellow-500/20"
+                ? "bg-gradient-to-br from-yellow-600/30 to-orange-600/30 border border-yellow-500/60 hover:border-yellow-400/80 text-yellow-200 hover:shadow-lg hover:shadow-yellow-500/40"
+                : "bg-gradient-to-br from-yellow-200 to-orange-200 border border-yellow-500 hover:border-yellow-600 text-yellow-900 hover:shadow-lg hover:shadow-yellow-600/30"
             }`}
           >
             <FaTrophy className="text-lg" />
@@ -187,8 +189,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={onOpenResume}
             className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-rose-600/15 to-amber-600/15 border border-rose-500/30 hover:border-rose-400/50 text-rose-300 hover:shadow-lg hover:shadow-rose-500/20"
-                : "bg-gradient-to-br from-rose-100/60 to-amber-100/60 border border-rose-400/40 hover:border-rose-500/60 text-rose-700 hover:shadow-lg hover:shadow-rose-400/20"
+                ? "bg-gradient-to-br from-rose-600/40 to-red-600/40 border border-rose-500/70 hover:border-rose-400/90 text-rose-200 hover:shadow-lg hover:shadow-rose-600/40"
+                : "bg-gradient-to-br from-rose-200 to-red-200 border border-rose-500 hover:border-red-600 text-rose-900 hover:shadow-lg hover:shadow-rose-600/30"
             }`}
           >
             <FaFileAlt className="text-lg" />
@@ -201,8 +203,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             onClick={onOpenExperience}
             className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-rose-600/15 to-rose-500/15 border border-rose-500/30 hover:border-rose-400/50 text-rose-300 hover:shadow-lg hover:shadow-rose-500/20"
-                : "bg-gradient-to-br from-rose-100/60 to-rose-100/60 border border-rose-400/40 hover:border-rose-500/60 text-rose-700 hover:shadow-lg hover:shadow-rose-400/20"
+                ? "bg-gradient-to-br from-purple-600/40 to-indigo-600/40 border border-purple-500/70 hover:border-purple-400/90 text-purple-200 hover:shadow-lg hover:shadow-purple-600/40"
+                : "bg-gradient-to-br from-purple-200 to-indigo-200 border border-purple-500 hover:border-indigo-600 text-purple-900 hover:shadow-lg hover:shadow-purple-600/30"
             }`}
           >
             <FaBriefcase className="text-lg" />
