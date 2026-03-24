@@ -146,11 +146,11 @@ const Skills = () => {
           <a
             href={resume}
             download="Resume.pdf"
-            className={`inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r ${
+            className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${
               isDarkMode
-                ? "from-cyan-500 via-blue-500 to-indigo-500 hover:from-cyan-600 hover:via-blue-600 hover:to-indigo-600 shadow-cyan-600/40"
-                : "from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-700 hover:via-blue-700 hover:to-indigo-700 shadow-cyan-600/40"
-            } text-white rounded-full transition-all duration-300 hover:transform hover:scale-105 shadow-xl hover:shadow-2xl`}
+                ? "from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-cyan-500/25"
+                : "from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-500/25"
+            } text-white rounded-full transition-all duration-300 hover:transform hover:scale-105 shadow-lg`}
           >
             <HiOutlineDownload />
             Download Resume

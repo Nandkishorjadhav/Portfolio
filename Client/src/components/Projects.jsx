@@ -198,7 +198,7 @@ const Projects = () => {
                 <div className="mt-auto text-center">
                   <button
                     onClick={() => openModal(project)}
-                    className={`inline-block px-6 py-2 rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-red-500 via-orange-500 to-amber-500 hover:from-red-600 hover:via-orange-600 hover:to-amber-600' : 'from-red-600 via-orange-600 to-amber-600 hover:from-red-700 hover:via-orange-700 hover:to-amber-700'} transition-all duration-300 cursor-pointer text-sm transform hover:scale-110 shadow-xl hover:shadow-2xl`}
+                    className={`inline-block px-4 py-2 rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700' : 'from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600'} transition-all duration-300 cursor-pointer text-sm transform hover:scale-105 shadow-lg hover:shadow-xl`}
                   >
                     View More
                   </button>
@@ -286,7 +286,7 @@ const Projects = () => {
                   href={selectedProject.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-1 text-center px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-red-500 via-orange-500 to-amber-500 hover:from-red-600 hover:via-orange-600 hover:to-amber-600' : 'from-red-600 via-orange-600 to-amber-600 hover:from-red-700 hover:via-orange-700 hover:to-amber-700'} transition-all duration-300 transform hover:scale-110 shadow-xl hover:shadow-2xl`}
+                  className={`flex-1 text-center px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700' : 'from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600'} transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                 >
                   Live Demo
                 </a>

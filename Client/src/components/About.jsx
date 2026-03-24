@@ -172,20 +172,20 @@ const About = () => {
 
               <div className={`p-6 sm:p-8 rounded-2xl sm:rounded-3xl ${
                 isDarkMode 
-                  ? 'bg-gradient-to-br from-slate-900/90 via-cyan-900/40 to-blue-900/30 backdrop-blur-lg border border-cyan-500/40 shadow-2xl shadow-cyan-600/20' 
-                  : 'bg-gradient-to-br from-white/95 via-blue-50/60 to-cyan-50/40 backdrop-blur-lg border border-cyan-300/50 shadow-2xl shadow-cyan-400/10'
-              } transition-all duration-700`}>
+                  ? 'bg-gradient-to-br from-slate-800/90 to-cyan-900/30 backdrop-blur-lg border border-cyan-500/20' 
+                  : 'bg-gradient-to-br from-white/90 to-blue-50/80 backdrop-blur-lg border border-blue-200/30'
+              } shadow-2xl transition-all duration-700`}>
                 
                 <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
                   <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-br ${
-                    isDarkMode ? 'from-cyan-600/30 to-blue-600/30' : 'from-cyan-500/30 to-blue-500/30'
-                  } flex-shrink-0 shadow-lg`}>
+                    isDarkMode ? 'from-cyan-500/20 to-blue-500/20' : 'from-blue-500/20 to-indigo-500/20'
+                  } flex-shrink-0`}>
                     <div className={`bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent`}>
                       {sections[currentSection].icon}
                     </div>
                   </div>
                   <div className="text-center sm:text-left">
-                    <div className={`text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-1`}>
+                    <div className={`text-sm font-semibold bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-1`}>
                       {sections[currentSection].highlight}
                     </div>
                     <h2 className={`text-2xl sm:text-3xl font-bold ${isDarkMode ? 'text-cyan-100' : textColor}`}>
@@ -200,7 +200,7 @@ const About = () => {
 
                 <div className={`mt-6 sm:mt-8 h-1 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'} rounded-full overflow-hidden`}>
                   <div 
-                    className={`h-1 ${isDarkMode ? 'bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600' : 'bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500'} rounded-full transition-all duration-4000 ease-linear`}
+                    className={`h-full bg-gradient-to-r ${titleGradient} rounded-full transition-all duration-4000 ease-linear`}
                     style={{ width: '100%', animation: 'progress 4s linear infinite' }}
                   />
                 </div>

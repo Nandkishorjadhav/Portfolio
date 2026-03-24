@@ -105,10 +105,10 @@ const Resume = () => {
             <a
               href={Resumee}
               download
-              className={`flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 transform hover:scale-110 ${
+              className={`flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 transform hover:scale-105 ${
                 isDarkMode
-                  ? "bg-gradient-to-r from-rose-500 via-red-500 to-orange-500 hover:from-rose-600 hover:via-red-600 hover:to-orange-600 hover:shadow-2xl hover:shadow-rose-600/50"
-                  : "bg-gradient-to-r from-rose-600 via-red-600 to-orange-600 hover:from-rose-700 hover:via-red-700 hover:to-orange-700 hover:shadow-2xl hover:shadow-rose-600/50"
+                  ? "bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-700 hover:to-orange-700 hover:shadow-xl hover:shadow-rose-500/50"
+                  : "bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-700 hover:to-orange-700 hover:shadow-xl hover:shadow-rose-500/30"
               }`}
             >
               <FaDownload size={18} />
@@ -117,11 +117,12 @@ const Resume = () => {
 
             <a
               href={Resumee}
+              
               rel="noopener noreferrer"
-              className={`flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-110 border-2 shadow-xl hover:shadow-2xl ${
+              className={`flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 border-2 ${
                 isDarkMode
-                  ? "border-orange-500 text-amber-300 hover:border-orange-400 hover:bg-gradient-to-r hover:from-orange-600/30 hover:to-red-600/30"
-                  : "border-orange-600 text-orange-700 hover:border-orange-700 hover:bg-gradient-to-r hover:from-orange-200 hover:to-red-100"
+                  ? "border-orange-500/50 text-orange-300 hover:border-orange-400 hover:bg-orange-500/10"
+                  : "border-orange-400 text-orange-700 hover:border-orange-600 hover:bg-orange-100"
               }`}
             >
               <FaExternalLinkAlt size={18} />
