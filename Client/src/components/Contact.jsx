@@ -73,10 +73,10 @@ const Contact = () => {
     ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
     : "from-blue-50 via-indigo-50 to-white";
   const cardBg = isDarkMode
-    ? "bg-[#1a1f3a]/50 border-red-500/20 shadow-red-500/10"
-    : "bg-white/80 border-red-500/20 shadow-red-500/10";
+    ? "bg-gradient-to-br from-slate-900/70 via-slate-800/60 to-slate-900/70 border-cyan-500/40 shadow-lg shadow-cyan-900/30 backdrop-blur-md hover:border-cyan-500/60"
+    : "bg-gradient-to-br from-white/90 via-slate-50/80 to-white/85 border-orange-300/60 shadow-lg shadow-orange-200/20 backdrop-blur-md hover:border-orange-400/80";
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
-  const subTextColor = isDarkMode ? "text-cyan-300" : "text-slate-600";
+  const subTextColor = isDarkMode ? "text-cyan-200/90" : "text-slate-700";
   const titleGradient = isDarkMode
     ? "from-red-400 to-orange-400"
     : "from-red-600 to-orange-600";

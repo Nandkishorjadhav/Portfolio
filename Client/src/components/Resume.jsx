@@ -31,10 +31,10 @@ const Resume = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`relative overflow-hidden rounded-2xl p-8 mb-8 ${
+        className={`relative overflow-hidden rounded-2xl p-8 mb-8 shadow-2xl transition-all duration-300 hover:shadow-3xl ${
           isDarkMode
-            ? "bg-gradient-to-br from-[#1a1f3a]/80 to-[#0f1419]/80 border border-red-500/30"
-            : "bg-gradient-to-br from-red-50 to-orange-50 border border-red-300"
+            ? "bg-gradient-to-br from-slate-900/90 via-slate-800/70 to-slate-900/80 border border-cyan-500/40 shadow-cyan-900/30 hover:border-cyan-500/60"
+            : "bg-gradient-to-br from-white/95 via-red-50/80 to-orange-50/90 border border-orange-300/60 shadow-orange-200/30 hover:border-orange-400/80"
         }`}
       >
         {/* Decorative Background */}
@@ -67,7 +67,7 @@ const Resume = () => {
 
             <p
               className={`mb-4 leading-relaxed ${
-                isDarkMode ? "text-cyan-200" : "text-gray-700"
+                isDarkMode ? "text-cyan-100/90" : "text-slate-700"
               }`}
             >
               A comprehensive overview of my professional journey, technical skills, project experience,
@@ -78,7 +78,7 @@ const Resume = () => {
             {/* Resume Highlights */}
             <ul
               className={`space-y-2 ${
-                isDarkMode ? "text-cyan-200" : "text-gray-700"
+                isDarkMode ? "text-cyan-100/85" : "text-slate-700"
               }`}
             >
               <li className="flex items-center gap-2">
@@ -147,11 +147,11 @@ const Resume = () => {
         ].map((section, idx) => (
           <motion.div
             key={idx}
-            whileHover={{ scale: 1.05 }}
-            className={`p-4 text-center rounded-xl transition-all duration-300 ${
+            whileHover={{ scale: 1.08, y: -4 }}
+            className={`p-4 text-center rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl ${
               isDarkMode
-                ? "bg-[#1a1f3a]/50 border border-cyan-500/20 hover:border-cyan-400/50"
-                : "bg-white/50 border border-gray-200 hover:border-red-400"
+                ? "bg-gradient-to-br from-slate-800/70 to-slate-900/60 border border-cyan-500/40 hover:border-cyan-400/70 backdrop-blur-sm"
+                : "bg-gradient-to-br from-white/80 to-orange-50/60 border border-orange-300 hover:border-orange-500 backdrop-blur-sm shadow-orange-200/20"
             }`}
           >
             <div className="text-3xl mb-2">{section.icon}</div>
@@ -167,10 +167,10 @@ const Resume = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
-        className={`mt-8 p-6 rounded-xl border ${
+        className={`mt-8 p-6 rounded-xl border shadow-lg transition-all duration-300 ${
           isDarkMode
-            ? "bg-[#1a1f3a]/30 border-cyan-500/20 text-cyan-200"
-            : "bg-purple-50/30 border-purple-300 text-gray-700"
+            ? "bg-slate-900/50 border-cyan-500/40 text-cyan-100/80 backdrop-blur-sm hover:border-cyan-500/60"
+            : "bg-gradient-to-br from-orange-50/60 to-red-50/40 border-orange-300 text-slate-700 backdrop-blur-sm hover:border-orange-400"
         }`}
       >
         <p className="text-sm">

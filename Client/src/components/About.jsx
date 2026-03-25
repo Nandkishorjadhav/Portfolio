@@ -14,7 +14,7 @@ const About = () => {
     : 'from-blue-50 via-indigo-50 to-white';
 
   const textColor = isDarkMode ? 'text-white' : 'text-slate-800';
-  const subTextColor = isDarkMode ? 'text-cyan-300' : 'text-slate-600';
+  const subTextColor = isDarkMode ? 'text-cyan-300/90' : 'text-slate-700';
   const titleGradient = isDarkMode
     ? 'from-red-400 to-orange-400'
     : 'from-red-600 to-orange-600';
@@ -198,10 +198,10 @@ const About = () => {
                   {sections[currentSection].content}
                 </p>
 
-                <div className={`mt-6 sm:mt-8 h-1 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'} rounded-full overflow-hidden`}>
+                <div className={`mt-6 sm:mt-8 h-1 rounded-full overflow-hidden ${isDarkMode ? 'bg-slate-700/50' : 'bg-gray-300/50'} shadow-md`}>
                   <div 
-                    className={`h-full bg-gradient-to-r ${titleGradient} rounded-full transition-all duration-4000 ease-linear`}
-                    style={{ width: '100%', animation: 'progress 4s linear infinite' }}
+                    className={`h-full bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 rounded-full transition-all duration-4000 ease-linear shadow-lg shadow-cyan-500/40`}
+                    style={{ width: '100%', animation: 'progress 7s linear infinite' }}
                   />
                 </div>
               </div>

@@ -398,7 +398,7 @@ const Experience = () => {
 
                   {/* Experience Card - Improved mobile layout */}
                   <motion.div
-                    className={`${cardBg} backdrop-blur-md border rounded-lg sm:rounded-xl p-3 sm:p-5 shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300`}
+                    className={`${cardBg} backdrop-blur-md border rounded-lg sm:rounded-xl p-3 sm:p-5 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-cyan-400/80`}
                     whileHover={{ scale: isMobile ? 1.02 : 1.01, y: -2 }}
                     whileTap={isMobile ? { scale: 0.98 } : {}}
                   >

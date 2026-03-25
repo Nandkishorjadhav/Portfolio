@@ -38,11 +38,11 @@ const Skills = () => {
     : "from-blue-50 via-indigo-50 to-white";
 
   const cardBg = isDarkMode
-    ? "bg-gray-800/50 border-red-500/20 shadow-red-500/10"
-    : "bg-white/80 border-red-500/20 shadow-red-500/10";
+    ? "bg-gradient-to-br from-slate-900/70 via-slate-800/60 to-slate-900/70 shadow-lg shadow-slate-900/40 border-cyan-500/40 hover:shadow-cyan-900/30"
+    : "bg-gradient-to-br from-white/90 via-slate-50/80 to-white/85 shadow-lg shadow-orange-200/20 border-orange-300/60 hover:shadow-orange-300/30";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
-  const subTextColor = isDarkMode ? "text-cyan-300" : "text-slate-600";
+  const subTextColor = isDarkMode ? "text-cyan-200/90" : "text-slate-700";
   const skillItemBg = isDarkMode
     ? "bg-gray-700/30 border-red-500/10 hover:from-red-600/10 hover:to-orange-600/10"
     : "bg-gray-100/50 border-red-500/10 hover:from-red-600/10 hover:to-orange-600/10";
@@ -129,7 +129,7 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className={`flex items-center gap-3 p-2 ${skillItemBg} rounded-lg hover:bg-gradient-to-r transition-colors border`}
+                    className={`flex items-center gap-3 p-2 ${skillItemBg} rounded-lg hover:bg-gradient-to-r transition-colors duration-300 border shadow-sm`}
                   >
                     <div className={`text-xl ${skill.color}`}>{skill.icon}</div>
                     <span className={isDarkMode ? "text-cyan-200" : "text-slate-700"}>

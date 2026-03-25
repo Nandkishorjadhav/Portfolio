@@ -28,7 +28,7 @@ const Projects = () => {
     : "from-red-600 to-orange-600";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
-  const subTextColor = isDarkMode ? "text-cyan-300" : "text-slate-600";
+  const subTextColor = isDarkMode ? "text-cyan-200/90" : "text-slate-700";
   const cardBg = isDarkMode ? "bg-slate-800/80" : "bg-white/80";
   const cardBorder = isDarkMode ? "border-slate-700" : "border-gray-200";
   const buttonBg = isDarkMode
@@ -166,7 +166,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className={`relative ${cardBg} ${cardBorder} border rounded-xl p-3 md:p-4 shadow-md backdrop-blur-sm`}
+              className={`relative ${cardBg} ${cardBorder} border rounded-xl p-3 md:p-4 shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300`}
               whileHover={{
                 scale: 1.05,
                 shadow: "lg",
