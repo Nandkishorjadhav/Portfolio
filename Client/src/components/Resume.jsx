@@ -13,14 +13,14 @@ const Resume = () => {
     <div className={isDarkMode ? "text-white" : "text-slate-800"}>
       {/* Header */}
       <div className="mb-8">
-        <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+        <h3 className="text-xl sm:text-2xl font-bold mb-2 flex items-center gap-2">
           <FaFile className={isDarkMode ? "text-cyan-400" : "text-red-600"} />
           Resume & CV
         </h3>
         <p
           className={`${
             isDarkMode ? "text-cyan-400" : "text-gray-600"
-          } text-lg`}
+          } text-base sm:text-lg`}
         >
           Download my detailed resume to learn more about my professional experience
         </p>
@@ -85,18 +85,6 @@ const Resume = () => {
                 <span className={isDarkMode ? "text-cyan-400" : "text-red-600"}>✓</span>
                 Full-Stack Development expertise with React, Node.js & MongoDB
               </li>
-              {/* <li className="flex items-center gap-2">
-                <span className={isDarkMode ? "text-cyan-400" : "text-red-600"}>✓</span>
-                AI/ML projects and competitive programming experience
-              </li>
-              <li className="flex items-center gap-2">
-                <span className={isDarkMode ? "text-cyan-400" : "text-red-600"}>✓</span>
-                Hackathon recognition and leadership experience
-              </li>
-              <li className="flex items-center gap-2">
-                <span className={isDarkMode ? "text-cyan-400" : "text-red-600"}>✓</span>
-                Multiple deployed projects with real-world impact
-              </li> */}
             </ul>
           </div>
 
@@ -105,7 +93,7 @@ const Resume = () => {
             <a
               href={Resumee}
               download
-              className={`flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 transform hover:scale-105 ${
+              className={`flex items-center justify-center gap-2 px-4 sm:px-8 py-2 sm:py-4 rounded-xl font-bold text-sm sm:text-base text-white transition-all duration-300 transform hover:scale-105 ${
                 isDarkMode
                   ? "bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-700 hover:to-orange-700 hover:shadow-xl hover:shadow-rose-500/50"
                   : "bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-700 hover:to-orange-700 hover:shadow-xl hover:shadow-rose-500/30"
@@ -119,7 +107,7 @@ const Resume = () => {
               href={Resumee}
               
               rel="noopener noreferrer"
-              className={`flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 border-2 ${
+              className={`flex items-center justify-center gap-2 px-4 sm:px-8 py-2 sm:py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 transform hover:scale-105 border-2 ${
                 isDarkMode
                   ? "border-orange-500/50 text-orange-300 hover:border-orange-400 hover:bg-orange-500/10"
                   : "border-orange-400 text-orange-700 hover:border-orange-600 hover:bg-orange-100"

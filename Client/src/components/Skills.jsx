@@ -34,8 +34,8 @@ const Skills = () => {
   const { isDarkMode } = useTheme();
 
   const bgGradient = isDarkMode
-    ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
-    : "from-blue-50 via-indigo-50 to-white";
+    ? "from-slate-950 via-slate-900 to-slate-950"
+    : "bg-white";
 
   const cardBg = isDarkMode
     ? "bg-gradient-to-br from-slate-900/70 via-slate-800/60 to-slate-900/70 shadow-lg shadow-slate-900/40 border-cyan-500/40 hover:shadow-cyan-900/30"
@@ -103,36 +103,36 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className={`min-h-screen bg-gradient-to-br ${bgGradient} py-20 px-6`}>
+    <section id="skills" className={`min-h-screen ${isDarkMode ? `bg-gradient-to-br ${bgGradient}` : bgGradient} py-12 sm:py-16 md:py-20 px-4 sm:px-6`}>
       <div className="max-w-6xl mx-auto">
         <h2
-          className={`text-4xl font-bold text-center bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}
+          className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}
         >
           Skills & Technologies
         </h2>
-        <p className={`text-center ${subTextColor} mb-12`}>Technologies I work with</p>
+        <p className={`text-center ${subTextColor} mb-8 sm:mb-12 text-sm sm:text-base`}>Technologies I work with</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className={`${cardBg} backdrop-blur-md border rounded-xl p-6 shadow-lg hover:transform hover:scale-105 transition-all duration-300`}
+              className={`${cardBg} backdrop-blur-md border rounded-xl p-4 sm:p-6 shadow-lg hover:transform hover:scale-105 transition-all duration-300`}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className={`text-2xl bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent`}>
+                <div className={`text-xl sm:text-2xl bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent`}>
                   {category.icon}
                 </div>
-                <h3 className={`text-xl font-bold ${textColor}`}>{category.title}</h3>
+                <h3 className={`text-base sm:text-lg md:text-xl font-bold ${textColor}`}>{category.title}</h3>
               </div>
 
               <div className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className={`flex items-center gap-3 p-2 ${skillItemBg} rounded-lg hover:bg-gradient-to-r transition-colors duration-300 border shadow-sm`}
+                    className={`flex items-center gap-3 p-2 sm:p-3 ${skillItemBg} rounded-lg hover:bg-gradient-to-r transition-colors duration-300 border shadow-sm`}
                   >
-                    <div className={`text-xl ${skill.color}`}>{skill.icon}</div>
-                    <span className={isDarkMode ? "text-cyan-200" : "text-slate-700"}>
+                    <div className={`text-lg sm:text-xl ${skill.color}`}>{skill.icon}</div>
+                    <span className={`text-sm sm:text-base ${isDarkMode ? "text-cyan-200" : "text-slate-700"}`}>
                       {skill.name}
                     </span>
                   </div>
@@ -146,7 +146,7 @@ const Skills = () => {
           <a
             href={resume}
             download="Resume.pdf"
-            className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${
+            className={`inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-gradient-to-r ${
               isDarkMode
                 ? "from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-cyan-500/25"
                 : "from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-500/25"

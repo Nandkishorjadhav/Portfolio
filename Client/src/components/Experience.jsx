@@ -24,10 +24,8 @@ const Experience = () => {
 
   // Color palette
   const bgGradient = isDarkMode
-    ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
-    : isMobile 
-      ? "from-blue-50 to-white"
-      : "from-blue-50 via-indigo-50 to-white";
+    ? "from-slate-950 via-slate-900 to-slate-950"
+    : "bg-white";
 
   const textColor = isDarkMode ? "text-white" : "text-slate-800";
   const subTextColor = isDarkMode ? "text-cyan-400" : "text-emerald-600";
@@ -260,7 +258,7 @@ const Experience = () => {
   return (
     <section 
       id="experience" 
-      className={`min-h-screen bg-gradient-to-br ${bgGradient} py-16 px-4 sm:px-6 lg:px-8`}
+      className={`min-h-screen ${isDarkMode ? `bg-gradient-to-br ${bgGradient}` : bgGradient} py-16 px-4 sm:px-6 lg:px-8`}
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}

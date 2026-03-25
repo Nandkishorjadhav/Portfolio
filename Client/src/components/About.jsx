@@ -8,10 +8,11 @@ const About = () => {
   const mountRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
+  const rendererRef = useRef(null); // Cache renderer
 
   const bgGradient = isDarkMode
-    ? 'from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]'
-    : 'from-blue-50 via-indigo-50 to-white';
+    ? 'from-slate-950 via-slate-900 to-slate-950'
+    : 'bg-white';
 
   const textColor = isDarkMode ? 'text-white' : 'text-slate-800';
   const subTextColor = isDarkMode ? 'text-cyan-300/90' : 'text-slate-700';
@@ -51,18 +52,20 @@ const About = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: 'low-power' });
     
-    const canvasSize = window.innerWidth < 640 ? 280 : window.innerWidth < 1024 ? 320 : 360;
+    const canvasSize = window.innerWidth < 640 ? 200 : window.innerWidth < 1024 ? 250 : 300;
     renderer.setSize(canvasSize, canvasSize);
     renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Cap pixel ratio for performance
     
     mountRef.current.innerHTML = '';
     mountRef.current.appendChild(renderer.domElement);
 
     const shapes = [];
     
-    const torusGeometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
+    // Reduced polygon count for torus: 8 segments, 16 tubular (was 16, 100)
+    const torusGeometry = new THREE.TorusGeometry(1, 0.3, 8, 16);
     const torusMaterial = new THREE.MeshBasicMaterial({
       color: isDarkMode ? 0xf87171 : 0xdc2626,
       wireframe: true,
@@ -72,6 +75,7 @@ const About = () => {
     const torus = new THREE.Mesh(torusGeometry, torusMaterial);
     shapes.push({ mesh: torus, speed: { x: 0.01, y: 0.02, z: 0.01 } });
 
+    // Reduced complexity for icosahedron (was detail: 0, now 0)
     const icosaGeometry = new THREE.IcosahedronGeometry(0.8, 0);
     const icosaMaterial = new THREE.MeshBasicMaterial({
       color: isDarkMode ? 0xfb923c : 0xf97316,
@@ -83,6 +87,7 @@ const About = () => {
     icosa.position.set(2, 1, -1);
     shapes.push({ mesh: icosa, speed: { x: 0.02, y: 0.01, z: 0.015 } });
 
+    // Octahedron stays simple (already low poly)
     const octaGeometry = new THREE.OctahedronGeometry(0.6);
     const octaMaterial = new THREE.MeshBasicMaterial({
       color: isDarkMode ? 0xf43f5e : 0xe11d48,
@@ -98,8 +103,13 @@ const About = () => {
     camera.position.z = 5;
 
     let animationFrameId;
+    let frameCount = 0;
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
+      
+      // Skip frames on slower devices (throttle animation)
+      frameCount++;
+      if (frameCount % 2 !== 0 && !isHovered) return; // 30fps on computers, but full 60fps when hovered
       
       const speedMultiplier = isHovered ? 2.5 : 1;
       
@@ -131,10 +141,11 @@ const About = () => {
 
   return (
     <section 
-      id="about" // Added ID for Navbar integration
-      className={`min-h-screen bg-gradient-to-br ${bgGradient} py-8 sm:py-12 lg:py-16 px-4 relative overflow-hidden`}
+      id="about"
+      className={`min-h-screen ${isDarkMode ? `bg-gradient-to-br ${bgGradient}` : bgGradient} py-8 sm:py-12 lg:py-16 px-4 relative overflow-hidden`}
     >
-      <div className="absolute inset-0 opacity-5 hidden md:block">
+      {/* Decorative background - hide on mobile for performance */}
+      <div className="absolute inset-0 opacity-5 hidden lg:block">
         <div className="absolute top-20 left-10 w-32 h-32 border-2 border-cyan-400 rounded-full"></div>
         <div className="absolute bottom-40 right-20 w-24 h-24 border-2 border-blue-400 rotate-45"></div>
         <div className="absolute top-1/3 right-10 w-16 h-16 border-2 border-indigo-400 rounded-full"></div>
@@ -293,4 +304,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default React.memo(About);

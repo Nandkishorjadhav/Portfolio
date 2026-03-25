@@ -20,8 +20,8 @@ const Projects = () => {
   }, []);
 
   const bgGradient = isDarkMode
-    ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
-    : "from-blue-50 via-indigo-50 to-white";
+    ? "from-slate-950 via-slate-900 to-slate-950"
+    : "bg-white";
 
   const titleGradient = isDarkMode
     ? "from-red-400 to-orange-400"
@@ -147,17 +147,17 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className={`min-h-screen bg-gradient-to-br ${bgGradient} py-20 px-6 flex items-center justify-center`}
+      className={`min-h-screen ${isDarkMode ? `bg-gradient-to-br ${bgGradient}` : bgGradient} py-12 sm:py-16 md:py-20 px-4 sm:px-6 flex items-center justify-center`}
     >
       <div
         className={`max-w-6xl mx-auto w-full ${isModalOpen ? "blur-md" : ""}`}
       >
         <h2
-          className={`text-4xl md:text-5xl font-bold text-center bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}
+          className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}
         >
           My Projects
         </h2>
-        <p className={`text-center ${subTextColor} mb-12 text-lg md:text-xl`}>
+        <p className={`text-center ${subTextColor} mb-8 sm:mb-12 text-sm sm:text-base md:text-lg`}>
           Explore some of my recent work
         </p>
 
@@ -166,7 +166,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className={`relative ${cardBg} ${cardBorder} border rounded-xl p-3 md:p-4 shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300`}
+              className={`relative ${cardBg} ${cardBorder} border rounded-xl p-3 sm:p-4 md:p-5 shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300`}
               whileHover={{
                 scale: 1.05,
                 shadow: "lg",
@@ -181,16 +181,16 @@ const Projects = () => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-28 md:h-36 object-cover rounded-lg shadow-md"
+                      className="w-full h-24 sm:h-28 md:h-36 object-cover rounded-lg shadow-md"
                     />
                   </div>
                   <div className="flex-1 text-center mb-4">
                     <h3
-                      className={`text-lg md:text-xl font-semibold ${textColor} mb-2`}
+                      className={`text-base sm:text-lg md:text-xl font-semibold ${textColor} mb-2`}
                     >
                       {project.title}
                     </h3>
-                    <p className={`${subTextColor} mb-4 text-xs md:text-sm`}>
+                    <p className={`${subTextColor} mb-4 text-xs sm:text-sm`}>
                       {project.description}
                     </p>
                   </div>
@@ -198,7 +198,7 @@ const Projects = () => {
                 <div className="mt-auto text-center">
                   <button
                     onClick={() => openModal(project)}
-                    className={`inline-block px-4 py-2 rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700' : 'from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600'} transition-all duration-300 cursor-pointer text-sm transform hover:scale-105 shadow-lg hover:shadow-xl`}
+                    className={`inline-block px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700' : 'from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600'} transition-all duration-300 cursor-pointer transform hover:scale-105 shadow-lg hover:shadow-xl`}
                   >
                     View More
                   </button>
@@ -231,12 +231,12 @@ const Projects = () => {
                   closeModal();
                 }
               }}
-              className={`relative ${modalBg} ${modalBorder} border rounded-2xl p-6 md:p-8 max-w-3xl w-full mx-auto shadow-2xl backdrop-blur-sm`}
+              className={`relative ${modalBg} ${modalBorder} border rounded-2xl p-4 sm:p-6 md:p-8 max-w-3xl w-full mx-auto shadow-2xl backdrop-blur-sm`}
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={closeModal}
-                className={`absolute top-4 right-4 ${buttonBg} text-white p-2 rounded-full transition-all duration-300 cursor-pointer`}
+                className={`absolute top-3 sm:top-4 right-3 sm:right-4 ${buttonBg} text-white p-2 rounded-full transition-all duration-300 cursor-pointer`}
                 aria-label="Close modal"
               >
                 <svg
@@ -254,16 +254,16 @@ const Projects = () => {
                 </svg>
               </button>
               <h3
-                className={`text-3xl md:text-4xl font-semibold ${textColor} mb-4`}
+                className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold ${textColor} mb-4`}
               >
                 {selectedProject.title}
               </h3>
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-48 md:h-64 object-cover rounded-lg shadow-md mb-6"
+                className="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-lg shadow-md mb-6"
               />
-              <p className={`${subTextColor} mb-6 text-base md:text-lg`}>
+              <p className={`${subTextColor} mb-6 text-sm sm:text-base md:text-lg`}>
                 {selectedProject.detailedDescription}
               </p>
               <div className="mb-6">
@@ -281,12 +281,12 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a
                   href={selectedProject.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-1 text-center px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700' : 'from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600'} transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
+                  className={`flex-1 text-center px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base rounded-lg font-medium text-white bg-gradient-to-r ${isDarkMode ? 'from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700' : 'from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600'} transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                 >
                   Live Demo
                 </a>
@@ -294,7 +294,7 @@ const Projects = () => {
                   href={selectedProject.sourceLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-1 text-center px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${
+                  className={`flex-1 text-center px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base rounded-lg font-medium text-white bg-gradient-to-r ${
                     isDarkMode
                       ? "from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700"
                       : "from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600"
@@ -311,4 +311,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default React.memo(Projects);

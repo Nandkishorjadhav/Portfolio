@@ -23,10 +23,10 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
     // console.log('All letters have animated!');
   };
 
-  // Professional color theme - Rose/Amber/Slate
+  // Unified background for entire website
   const bgGradient = isDarkMode
     ? "from-slate-950 via-slate-900 to-slate-950"
-    : "white";
+    : "bg-white";
 
   const bgClass = isDarkMode
     ? `bg-gradient-to-br ${bgGradient}`
@@ -53,7 +53,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
         className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0"
       >
         <div
-          className={`relative group w-72 h-72 md:w-96 md:h-96`}
+          className={`relative group w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96`}
         >
           {/* Glow Background */}
           <div className="absolute -inset-4 rounded-full blur-2xl bg-gradient-to-r from-rose-500/10 to-amber-500/10 opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
@@ -76,8 +76,8 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
       </motion.div>
 
       {/* Details on the Right */}
-      <div className="text-center max-w-5xl w-full md:w-1/2 md:text-left md:pl-6">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 flex flex-wrap justify-center md:justify-start items-center">
+      <div className="text-center max-w-5xl w-full md:w-1/2 md:text-left md:pl-4 lg:md:pl-6 px-2 sm:px-0">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 flex flex-wrap justify-center md:justify-start items-center">
           <SplitText
             text="Hi, I'm "
             className={`bg-gradient-to-r ${nameGradient} bg-clip-text text-4xl sm:text-5xl md:text-6xl font-bold inline-block align-middle`}
@@ -123,7 +123,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
         </h1>
 
         <p
-          className={`text-lg sm:text-xl ${subTextColor} leading-relaxed mb-6`}
+          className={`text-base sm:text-lg md:text-xl ${subTextColor} leading-relaxed mb-4 sm:mb-6`}
         >
           A passionate{" "}
           <span
@@ -136,12 +136,12 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
         </p>
 
         {/* Primary Buttons */}
-        <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
+        <div className="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3 mb-6 sm:mb-8">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleScrollToSection("about")}
-            className={`group relative px-6 py-3 rounded-full font-bold text-white transition-all duration-300 overflow-hidden shadow-lg hover:shadow-xl ${
+            className={`group relative px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base text-white transition-all duration-300 overflow-hidden shadow-lg hover:shadow-xl ${
               isDarkMode
                 ? "bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 hover:shadow-rose-500/30"
                 : "bg-gradient-to-r from-rose-700 to-amber-600 hover:from-rose-800 hover:to-amber-700 hover:shadow-rose-400/30"
@@ -155,7 +155,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleScrollToSection("projects")}
-            className={`group relative px-6 py-3 rounded-full font-bold transition-all duration-300 border-2 shadow-lg hover:shadow-xl ${
+            className={`group relative px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base transition-all duration-300 border-2 shadow-lg hover:shadow-xl ${
               isDarkMode
                 ? "border-amber-600/40 text-amber-300 hover:border-amber-400 hover:bg-amber-600/10"
                 : "border-amber-600/40 text-amber-700 hover:border-amber-700 hover:bg-amber-100/50"
@@ -166,18 +166,18 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
         </div>
 
         {/* Feature Buttons */}
-        <div className="grid grid-cols-3 gap-2 mb-10 max-w-md">
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-3 mb-8 sm:mb-10 max-w-lg sm:max-w-md">
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={onOpenHackathons}
-            className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
+            className={`p-2 sm:p-3 rounded-lg sm:rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-400/30 hover:border-yellow-400/60 text-yellow-300 hover:shadow-lg hover:shadow-yellow-500/20"
-                : "bg-gradient-to-br from-yellow-100 to-orange-100 border border-yellow-300 hover:border-yellow-500 text-yellow-700 hover:shadow-lg hover:shadow-yellow-500/20"
+                ? "bg-gradient-to-br from-yellow-600/30 to-orange-600/30 border border-yellow-500/60 hover:border-yellow-400/80 text-yellow-200 hover:shadow-lg hover:shadow-yellow-500/40"
+                : "bg-gradient-to-br from-yellow-200 to-orange-200 border border-yellow-500 hover:border-yellow-600 text-yellow-900 hover:shadow-lg hover:shadow-yellow-600/30"
             }`}
           >
-            <FaTrophy className="text-lg" />
+            <FaTrophy className="text-base sm:text-lg" />
             <span className="text-xs font-bold">Hackathons</span>
           </motion.button>
 
@@ -185,13 +185,13 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={onOpenResume}
-            className={`p-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
+            className={`p-2 sm:p-3 rounded-lg sm:rounded-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
               isDarkMode
-                ? "bg-gradient-to-br from-rose-600/15 to-amber-600/15 border border-rose-500/30 hover:border-rose-400/50 text-rose-300 hover:shadow-lg hover:shadow-rose-500/20"
-                : "bg-gradient-to-br from-rose-100/60 to-amber-100/60 border border-rose-400/40 hover:border-rose-500/60 text-rose-700 hover:shadow-lg hover:shadow-rose-400/20"
+                ? "bg-gradient-to-br from-rose-600/40 to-red-600/40 border border-rose-500/70 hover:border-rose-400/90 text-rose-200 hover:shadow-lg hover:shadow-rose-600/40"
+                : "bg-gradient-to-br from-rose-200 to-red-200 border border-rose-500 hover:border-red-600 text-rose-900 hover:shadow-lg hover:shadow-rose-600/30"
             }`}
           >
-            <FaFileAlt className="text-lg" />
+            <FaFileAlt className="text-base sm:text-lg" />
             <span className="text-xs font-bold">Resume</span>
           </motion.button>
 
@@ -211,7 +211,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
         </div>
 
         {/* Social Icons */}
-        <div className="flex justify-center md:justify-start gap-6 text-3xl">
+        <div className="flex justify-center md:justify-start gap-3 sm:gap-4 text-2xl sm:text-3xl">
           <motion.a
             whileHover={{ scale: 1.2, rotate: 5 }}
             href="https://github.com/Nandkishorjadhav"
