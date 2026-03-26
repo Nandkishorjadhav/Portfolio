@@ -29,6 +29,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Performance Optimizations */
+section {
+  contain: layout style paint;
+}
+
+/* Hardware acceleration for animations */
+.motion-div,
+[class*="motion"],
+.group {
+  will-change: auto;
+}
+
+.group:hover > * {
+  will-change: transform;
+}
+
+/* Reduce animations on mobile */
+@media (max-width: 640px) {
+  * {
+    animation-duration: 0.3s !important;
+    animation-delay: 0s !important;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;

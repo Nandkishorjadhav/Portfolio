@@ -154,7 +154,7 @@ const About = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <div className="relative inline-block">
-            <h1 className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black ${textColor} mb-4 relative`}>
+            <h1 className={`text-5xl sm:text-6xl md:text-6xl lg:text-8xl font-black ${textColor} mb-4 relative`}>
               About
             </h1>
             <div className={`absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-1 sm:h-2 bg-gradient-to-r ${titleGradient} rounded-full transform -skew-x-12`}></div>

@@ -40,7 +40,7 @@ const Resume = () => {
         {/* Decorative Background */}
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-full blur-3xl" />
 
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
           {/* Left Content */}
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-6">

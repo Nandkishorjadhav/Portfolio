@@ -258,7 +258,7 @@ const Experience = () => {
   return (
     <section 
       id="experience" 
-      className={`min-h-screen ${isDarkMode ? `bg-gradient-to-br ${bgGradient}` : bgGradient} py-16 px-4 sm:px-6 lg:px-8`}
+      className={`min-h-screen ${isDarkMode ? `bg-gradient-to-br ${bgGradient}` : bgGradient} py-12 sm:py-16 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8`}
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
@@ -268,7 +268,7 @@ const Experience = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}>
+          <h2 className={`text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4`}>
             My Experience Journey
           </h2>
           <p className={`text-lg sm:text-xl ${subTextColor} mb-8 px-4`}>

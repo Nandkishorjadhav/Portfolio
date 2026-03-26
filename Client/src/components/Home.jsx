@@ -53,7 +53,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
         className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0"
       >
         <div
-          className={`relative group w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96`}
+          className={`relative group w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-96 lg:h-96`}
         >
           {/* Glow Background */}
           <div className="absolute -inset-4 rounded-full blur-2xl bg-gradient-to-r from-rose-500/10 to-amber-500/10 opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
@@ -166,7 +166,7 @@ const Home = ({ onOpenHackathons, onOpenResume, onOpenExperience }) => {
         </div>
 
         {/* Feature Buttons */}
-        <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-3 mb-8 sm:mb-10 max-w-lg sm:max-w-md">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-10 md:mb-12 max-w-lg sm:max-w-md md:max-w-lg">
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
