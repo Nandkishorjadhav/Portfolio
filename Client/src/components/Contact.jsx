@@ -68,10 +68,10 @@ const Contact = () => {
     // },
   ];
 
-  // Unified website background
+  // Theme-based styles
   const bgGradient = isDarkMode
-    ? "from-slate-950 via-slate-900 to-slate-950"
-    : "bg-white";
+    ? "from-[#0a0e27] via-[#1a2a4a] to-[#0f1419]"
+    : "from-blue-50 via-indigo-50 to-white";
   const cardBg = isDarkMode
     ? "bg-gradient-to-br from-slate-900/70 via-slate-800/60 to-slate-900/70 border-cyan-500/40 shadow-lg shadow-cyan-900/30 backdrop-blur-md hover:border-cyan-500/60"
     : "bg-gradient-to-br from-white/90 via-slate-50/80 to-white/85 border-orange-300/60 shadow-lg shadow-orange-200/20 backdrop-blur-md hover:border-orange-400/80";
@@ -84,13 +84,13 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className={`min-h-screen relative ${isDarkMode ? `bg-gradient-to-br ${bgGradient}` : bgGradient} py-12 sm:py-16 px-4 sm:px-6 overflow-x-hidden`}
+      className={`min-h-screen relative bg-gradient-to-br ${bgGradient} py-12 sm:py-16 px-4 sm:px-6 overflow-x-hidden`}
     >
-      {/* Optimized background animations - reduced on smaller screens */}
-      <div className="absolute inset-0 overflow-hidden hidden lg:block">
-        <div className="absolute -top-20 -right-20 w-40 lg:w-64 h-40 lg:h-64 rounded-full bg-gradient-to-r from-red-300/10 to-orange-300/10 blur-2xl animate-pulse"></div>
-        <div className="absolute -bottom-20 -left-20 w-40 lg:w-64 h-40 lg:h-64 rounded-full bg-gradient-to-r from-orange-300/10 to-red-300/10 blur-2xl animate-pulse" style={{ animationDelay: "1s" }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 lg:w-72 h-48 lg:h-72 rounded-full bg-gradient-to-r from-pink-200/5 to-red-200/5 blur-3xl" style={{ animationDuration: "20s" }}></div>
+      {/* Optimized background animations */}
+      <div className="absolute inset-0 overflow-hidden hidden sm:block">
+        <div className="absolute -top-20 -right-20 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-gradient-to-r from-red-300/20 to-orange-300/20 blur-2xl animate-pulse"></div>
+        <div className="absolute -bottom-20 -left-20 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-gradient-to-r from-orange-300/20 to-red-300/20 blur-2xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-gradient-to-r from-pink-200/10 to-red-200/10 blur-2xl animate-spin" style={{ animationDuration: "20s" }}></div>
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -98,7 +98,7 @@ const Contact = () => {
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-block">
             <h2
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4 tracking-tight`}
+              className={`text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r ${titleGradient} bg-clip-text text-transparent mb-4 tracking-tight`}
             >
               Let's Connect
             </h2>
